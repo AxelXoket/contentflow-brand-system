@@ -1,0 +1,639 @@
+[
+  {
+    "file": "tools/checks.py",
+    "old": ".replace(\"I\", \"ı\")",
+    "new": "",
+    "lane": "fast",
+    "why": "Turkish I lowercases to i"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "(?<=[.!?])\\s+|\\n+",
+    "new": "(?<=[.!?])\\s+",
+    "lane": "fast",
+    "why": "a line break no longer ends a sentence"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "    plain = URL.sub(\"\", text)\n    parts",
+    "new": "    plain = text\n    parts",
+    "lane": "fast",
+    "why": "URL words count in sentences"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "if len(words(s)) > limit]",
+    "new": "if len(words(s)) >= limit]",
+    "lane": "fast",
+    "why": "a sentence at the word limit is refused"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "pattern = rf\"(?<!\\w){re.escape(stem)}\"",
+    "new": "pattern = re.escape(stem)",
+    "lane": "fast",
+    "why": "avoided and banned words match inside other words"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "    plain = URL.sub(\"\", text)\n    return sorted({word for word in avoid",
+    "new": "    plain = text\n    return sorted({word for word in avoid",
+    "lane": "fast",
+    "why": "avoided words match inside URLs"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "\"seninle\", \"senle\", \"sence\")",
+    "new": "\"senle\", \"sence\")",
+    "lane": "fast",
+    "why": "one singular address form is dropped"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "for w in STYLE_BANNED if starts_a_word(w, text)]",
+    "new": "for w in STYLE_BANNED if re.search(rf\"\\b{w}\\b\", text.lower())]",
+    "lane": "fast",
+    "why": "banned words with a suffix pass"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "found = [f\"long dash U+{ord(c):04X}\" for c in LONG_DASHES if c in text]",
+    "new": "found = []",
+    "lane": "fast",
+    "why": "long dashes pass"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "plain = tr_lower(HASHTAG.sub(\"\", URL.sub(\"\", text)))",
+    "new": "plain = tr_lower(URL.sub(\"\", text))",
+    "lane": "fast",
+    "why": "numbers in hashtags are checked"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "plain = tr_lower(HASHTAG.sub(\"\", URL.sub(\"\", text)))",
+    "new": "plain = tr_lower(HASHTAG.sub(\"\", text))",
+    "lane": "fast",
+    "why": "numbers in URLs are checked"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "NUMBER = re.compile(r\"(%?\\d+(?:[.,]\\d+)*(?:-",
+    "new": "NUMBER = re.compile(r\"(%?\\d+(?:-",
+    "lane": "fast",
+    "why": "1.250,50 splits into three numbers"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "items = brand[\"facts\"] + brand[\"own_numbers\"]",
+    "new": "items = brand[\"facts\"]",
+    "lane": "fast",
+    "why": "own numbers are no longer allowed"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "if len(text) > CHANNEL_LIMITS[channel]:",
+    "new": "if len(text) >= CHANNEL_LIMITS[channel]:",
+    "lane": "fast",
+    "why": "a post at the length limit is refused"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "if len(tags) > HASHTAG_LIMITS[channel]:",
+    "new": "if len(tags) >= HASHTAG_LIMITS[channel]:",
+    "lane": "fast",
+    "why": "a post at the hashtag limit is refused"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "if tr_lower(LINK_IN_BIO.get(channel, BRAND[\"short_url\"])) not in tr_lower(text):",
+    "new": "if False:",
+    "lane": "fast",
+    "why": "a post without the panel link passes"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "if len(meta[\"title\"]) > BLOG_TITLE_MAX:",
+    "new": "if len(meta[\"title\"]) >= BLOG_TITLE_MAX:",
+    "lane": "fast",
+    "why": "a title at the limit is refused"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "if not low <= len(meta[\"description\"]) <= high:",
+    "new": "if not low < len(meta[\"description\"]) <= high:",
+    "lane": "fast",
+    "why": "the shortest allowed description is refused"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "if not low <= len(meta[\"description\"]) <= high:",
+    "new": "if not low <= len(meta[\"description\"]) < high:",
+    "lane": "fast",
+    "why": "the longest allowed description is refused"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "if not low <= count <= high:",
+    "new": "if not low < count <= high:",
+    "lane": "fast",
+    "why": "the lowest allowed word count is refused"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "if not low <= count <= high:",
+    "new": "if not low <= count < high:",
+    "lane": "fast",
+    "why": "the highest allowed word count is refused"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "if len(h1) != 1:",
+    "new": "if len(h1) > 1:",
+    "lane": "fast",
+    "why": "a blog without an H1 passes"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "    if not any(keyword in tr_lower(h) for h in h2):\n        problems.append(\"keyword missing from every H2\")\n",
+    "new": "",
+    "lane": "fast",
+    "why": "the H2 keyword rule is gone"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "if keyword not in tr_lower(text):",
+    "new": "if keyword not in text.lower():",
+    "lane": "fast",
+    "why": "keyword match ignores Turkish case"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "    if BRAND[\"disclaimer\"] not in markdown_text:\n        problems.append(\"no disclaimer\")\n",
+    "new": "",
+    "lane": "fast",
+    "why": "a blog without the disclaimer passes"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "return len(words(re.sub(r\"\\]\\([^)]*\\)\", \"]\", IMAGE.sub(\"\", markdown_text))))",
+    "new": "return len(words(IMAGE.sub(\"\", markdown_text)))",
+    "lane": "fast",
+    "why": "link and picture addresses count as blog words"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "    problems += [f\"{NUMBER_PROBLEM} {n}\" for n in unexplained_numbers(text)]\n",
+    "new": "",
+    "lane": "fast",
+    "why": "numbers without a source pass"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "    problems += [f\"avoided word {w}\" for w in avoided_words(text)]\n",
+    "new": "",
+    "lane": "fast",
+    "why": "avoided words pass"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "escaped = CLITIC.sub(r\"&nbsp;\\1\", NUMBER_AND_WORD.sub(r\"\\1&nbsp;\", escaped))",
+    "new": "escaped = CLITIC.sub(r\"&nbsp;\\1\", escaped)",
+    "lane": "fast",
+    "why": "a number may leave its word on the line above"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "HYPHENATED = re.compile(r\"[^\\s<>]*\\w-\\w[^\\s<>]*\")",
+    "new": "HYPHENATED = re.compile(r\"[^\\s<>]*\\w--\\w[^\\s<>]*\")",
+    "lane": "fast",
+    "why": "hyphenated words may split"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "part if part.startswith(\"<\") else keep_together(part)",
+    "new": "keep_together(part)",
+    "lane": "fast",
+    "why": "tag attributes get rewritten"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "<body>{keep_together_html(body)}",
+    "new": "<body>{body}",
+    "lane": "fast",
+    "why": "text written into markup skips the keep-together rules"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "        texts[f\"calendar {row['date']}\"] = ",
+    "new": "        texts[f\"calendar-off {row['date']}\"] = ",
+    "lane": "fast",
+    "why": "calendar texts are not checked"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "texts.update({spec[\"id\"]: visible_text(spec) for spec in media[\"images\"] + media[\"stories\"]})",
+    "new": "texts.update({spec[\"id\"]: visible_text(spec) for spec in media[\"images\"]})",
+    "lane": "fast",
+    "why": "story texts are not checked"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "if spec[\"min_seconds\"] <= seconds <= spec[\"max_seconds\"]:",
+    "new": "if spec[\"min_seconds\"] < seconds <= spec[\"max_seconds\"]:",
+    "lane": "fast",
+    "why": "a 15 s video is refused"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "if spec[\"min_seconds\"] <= seconds <= spec[\"max_seconds\"]:",
+    "new": "if spec[\"min_seconds\"] <= seconds < spec[\"max_seconds\"]:",
+    "lane": "fast",
+    "why": "a 20 s video is refused"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "f\"{edge},areverse,{edge},areverse\"",
+    "new": "f\"{edge}\"",
+    "lane": "fast",
+    "why": "trailing silence stays in each scene"
+  },
+  {
+    "file": "tools/docs.py",
+    "old": "if problem.startswith(checks.NUMBER_PROBLEM)]",
+    "new": "if False]",
+    "lane": "fast",
+    "why": "number problems land in the voice column"
+  },
+  {
+    "file": "tools/docs.py",
+    "old": "return f\"{value:.1f}\".replace(\".\", \",\")",
+    "new": "return f\"{value:.1f}\"",
+    "lane": "fast",
+    "why": "seconds print with a decimal point"
+  },
+  {
+    "file": "tools/docs.py",
+    "old": "[f\"calendar {row['date']}\" for row in calendar]",
+    "new": "[]",
+    "lane": "fast",
+    "why": "the checklist ignores calendar problems"
+  },
+  {
+    "file": "tools/render.py",
+    "old": "if (middle(box) > bottom) { lines += 1;",
+    "new": "if (box.top > bottom) { lines += 1;",
+    "lane": "edge",
+    "why": "tight line heights hide extra lines"
+  },
+  {
+    "file": "tools/render.py",
+    "old": ".page, .canvas, .slide, .box, .card, .swatch, td, th",
+    "new": ".page, .canvas, .box, .card, .swatch, th",
+    "lane": "edge",
+    "why": "slides and cells are not watched"
+  },
+  {
+    "file": "tools/render.py",
+    "old": "if (lines > Number(el.dataset.maxLines))",
+    "new": "if (lines > Number(el.dataset.maxLines) + 1)",
+    "lane": "edge",
+    "why": "one extra line is let through"
+  },
+  {
+    "file": "tools/render.py",
+    "old": "if (el.scrollWidth > el.clientWidth + 1) problems.push(`${name(el)}: wider than its box`);",
+    "new": "",
+    "lane": "edge",
+    "why": "text wider than its box passes"
+  },
+  {
+    "file": "tools/render.py",
+    "old": "FIT_REPORT = re.compile(r'<pre id=\"fit-report\"[^>]*>(.*?)</pre>', re.DOTALL)",
+    "new": "FIT_REPORT = re.compile(r'<pre id=\"fit-report\">(.*?)</pre>', re.DOTALL)",
+    "lane": "edge",
+    "why": "the report tag with hidden=\"\" is not read"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "(?=[^\\W\\d]|[$%€₺])",
+    "new": "(?=[^\\W\\d])",
+    "lane": "fast",
+    "why": "a price leaves its currency sign on the next line"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "(d[ae]|ki|m[iıuü])(?!\\w)",
+    "new": "(da)(?!\\w)",
+    "lane": "fast",
+    "why": "only \"da\" stays with the word before it"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "(d[ae]|ki|m[iıuü])(?!\\w)",
+    "new": "(d[ae]|ki|m[iıuü]))",
+    "lane": "fast",
+    "why": "a word that only starts like a particle is bound too"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "if point and number.isdigit() and ORDINAL_LEAD.fullmatch(plain[line_start:match.start()]):",
+    "new": "if point:",
+    "lane": "fast",
+    "why": "a sentence-final point makes any number an ordinal"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "if point and number.isdigit() and ORDINAL_LEAD.fullmatch(plain[line_start:match.start()]):",
+    "new": "if point and number.isdigit():",
+    "lane": "fast",
+    "why": "a whole number mid-sentence counts as an ordinal"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "ORDINAL_LEAD = re.compile(r\"[#>*\\s-]*\")",
+    "new": "ORDINAL_LEAD = re.compile(r\".*\")",
+    "lane": "fast",
+    "why": "any text before a number lets it be an ordinal"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "    plain = NUMBER_WORD.sub(lambda m: str(NUMBER_WORDS[m.group(1)]), plain)\n",
+    "new": "",
+    "lane": "fast",
+    "why": "number words are not checked"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "    plain = PERCENT_WORD.sub(lambda m: f\"%{NUMBER_WORDS[m.group(1)]}\", plain)\n",
+    "new": "",
+    "lane": "fast",
+    "why": "yüzde with a number word is not checked"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "NUMBER_WORDS = {\"iki\": 2,",
+    "new": "NUMBER_WORDS = {\"bir\": 1, \"yedi\": 7, \"iki\": 2,",
+    "lane": "fast",
+    "why": "bir and yedi count as numbers"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "return [tr_lower(w) for w in words(a)] == [tr_lower(w) for w in words(b)]",
+    "new": "return words(a) == words(b)",
+    "lane": "fast",
+    "why": "same_words follows letter case"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "return [tr_lower(w) for w in words(a)] == [tr_lower(w) for w in words(b)]",
+    "new": "return sorted(map(tr_lower, words(a))) == sorted(map(tr_lower, words(b)))",
+    "lane": "fast",
+    "why": "same_words ignores word order"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "if not checks.same_words(s[\"text\"], s[\"narration\"])]",
+    "new": "if False]",
+    "lane": "fast",
+    "why": "a scene may say something other than its screen"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "not re.match(r\"#|[-*>] |\\d+\\. \", line)",
+    "new": "not line.startswith((\"#\", \"-\", \"*\", \">\", \"1\", \"2\", \"3\", \"4\", \"5\"))",
+    "lane": "fast",
+    "why": "a paragraph that starts with a digit is skipped"
+  },
+  {
+    "file": "tools/docs.py",
+    "old": "\"Seslendirme\": media[\"voiceover\"]}[channel]",
+    "new": "\"Seslendirme\": media[\"video\"]}[channel]",
+    "lane": "fast",
+    "why": "the voiceover row shows the video limits"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "problem = length_problem(duration(voice), spec, \"voiceover\")",
+    "new": "problem = None",
+    "lane": "fast",
+    "why": "a voiceover of any length is kept"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "        shutil.copy(voice, target)\n",
+    "new": "",
+    "lane": "fast",
+    "why": "a passing voiceover is not saved"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "for low in (tr_lower(text), unicodedata.normalize(\"NFC\", text).lower())",
+    "new": "for low in (tr_lower(text),)",
+    "lane": "fast",
+    "why": "KESIN typed without the dot passes"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "\\S*?(?=[.,;:!?)\\\"”]*(?:\\s|$))",
+    "new": "\\S*?(?=\\s|$)",
+    "lane": "fast",
+    "why": "an address swallows the full stop after it"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "(?:https?://|\\b[a-z0-9-]+(?:\\.[a-z0-9-]+)+/)",
+    "new": "(?:https?://)",
+    "lane": "fast",
+    "why": "an address without https is read as text"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "LINK_IN_BIO = {\"Instagram\": \"bağlantı profilde\"}",
+    "new": "LINK_IN_BIO = {}",
+    "lane": "fast",
+    "why": "Instagram must print the address"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "if tr_lower(LINK_IN_BIO.get(channel, BRAND[\"short_url\"])) not in tr_lower(text):",
+    "new": "if LINK_IN_BIO.get(channel, BRAND[\"short_url\"]) not in text:",
+    "lane": "fast",
+    "why": "the profile phrase follows letter case"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "if any(found == number and after.startswith(tr_lower(start))",
+    "new": "if any(found == number",
+    "lane": "fast",
+    "why": "a fact is claimed by its number alone"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "low = tr_lower(URL.sub(\"\", text))",
+    "new": "low = tr_lower(text)",
+    "lane": "fast",
+    "why": "an address makes a claim"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "if any(tr_lower(p) in low for p in item[\"phrases\"])",
+    "new": "if any(p in text for p in item[\"phrases\"])",
+    "lane": "fast",
+    "why": "claim phrases follow letter case"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "x = min(max(x, 0.0), 1.0)",
+    "new": "x = x",
+    "lane": "fast",
+    "why": "easing runs past its ends"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "        if t < end:\n            return index",
+    "new": "        if t <= end:\n            return index",
+    "lane": "fast",
+    "why": "a form step ends one frame late"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "smooth((t - EDGE_TIME) / (length - 2 * EDGE_TIME))",
+    "new": "smooth(t / length)",
+    "lane": "fast",
+    "why": "the pan does not wait at its ends"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "lengths = [max(s + SPEECH_LEAD + SPEECH_TAIL, m) for s, m in zip(speech, motion)]",
+    "new": "lengths = [s + SPEECH_LEAD + SPEECH_TAIL for s, m in zip(speech, motion)]",
+    "lane": "fast",
+    "why": "a scene cuts its motion short"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "missing = spec[\"min_seconds\"] + 0.5 - sum(lengths)",
+    "new": "missing = 0",
+    "lane": "fast",
+    "why": "a short video is not stretched"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "f',apad=pad_dur={gap}' if i < len(parts) - 1 else ''",
+    "new": "''",
+    "lane": "fast",
+    "why": "sentences run into each other"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "re.split(r\"(?<=[.?!])\\s+\", text.strip())",
+    "new": "[text.strip()]",
+    "lane": "fast",
+    "why": "a scene is read as one sentence"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "filled = round(width * min(max(share, 0.0), 1.0))",
+    "new": "filled = width",
+    "lane": "fast",
+    "why": "the story bar is always full"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "    frame = card.copy()\n    draw = ImageDraw.Draw(frame)",
+    "new": "    frame = card\n    draw = ImageDraw.Draw(frame)",
+    "lane": "fast",
+    "why": "the progress bar paints over the card"
+  },
+  {
+    "file": "tools/docs.py",
+    "old": "return \"; \".join([items[0]] + [checks.tr_lower(item[0]) + item[1:] for item in items[1:]])",
+    "new": "return \"; \".join(items)",
+    "lane": "fast",
+    "why": "joined items keep their capitals"
+  },
+  {
+    "file": "tools/docs.py",
+    "old": "claims = {claim for key in keys for claim in checks.claims_in(texts[key])}",
+    "new": "claims = set()",
+    "lane": "fast",
+    "why": "the checklist shows no claims"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "apad=pad_dur={gap}",
+    "new": "apad=pad_dur={SENTENCE_GAP}",
+    "lane": "fast",
+    "why": "the given gap is ignored"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "workdir, \"voiceover\", VOICEOVER_GAP), voice)",
+    "new": "workdir, \"voiceover\"), voice)",
+    "lane": "fast",
+    "why": "the voiceover keeps the short video gap"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "loud(speak(spec[\"script\"], spec[\"voice\"], spec[\"rate\"], workdir, \"voiceover\", VOICEOVER_GAP), voice)",
+    "new": "tts(spec[\"script\"], spec[\"voice\"], spec[\"rate\"], workdir / \"raw.mp3\"); loud(workdir / \"raw.mp3\", voice)",
+    "lane": "fast",
+    "why": "the voiceover is read in one piece with its long pauses"
+  },
+  {
+    "file": "tools/build.py",
+    "old": "<div class=\"sticker\"></div>",
+    "new": "<div class=\"sticker\">{\"\".join(e(o) for o in story[\"options\"])}</div>",
+    "lane": "fast",
+    "why": "the poll options show twice"
+  },
+  {
+    "file": "tools/docs.py",
+    "old": "{REPO_URL}/blob/main/{path.relative_to(build.ROOT).as_posix()}",
+    "new": "{REPO_URL}/{path.name}",
+    "lane": "fast",
+    "why": "a link misses the file's folder"
+  },
+  {
+    "file": "tools/docs.py",
+    "old": "path.relative_to(build.ROOT)",
+    "new": "path.relative_to(build.OUT)",
+    "lane": "fast",
+    "why": "a link starts below the repository root"
+  },
+  {
+    "file": "tools/docs.py",
+    "old": "zoom = 1280 * SHOT_SCALE / page.rect.width",
+    "new": "zoom = SHOT_SCALE",
+    "lane": "fast",
+    "why": "slide pictures come out at the wrong size"
+  },
+  {
+    "file": "tools/docs.py",
+    "old": "    for old in target_dir.glob(\"*.png\"):\n        old.unlink()\n    saved = []",
+    "new": "    saved = []",
+    "lane": "fast",
+    "why": "old slide pictures stay"
+  },
+  {
+    "file": "tools/docs.py",
+    "old": "zip(doc, keys, strict=True)",
+    "new": "zip(doc, keys)",
+    "lane": "fast",
+    "why": "a page without a name is dropped without a word"
+  },
+  {
+    "file": "tools/docs.py",
+    "old": "target = target_dir / f\"{number:02d}-{key}.png\"",
+    "new": "target = target_dir / f\"{key}.png\"",
+    "lane": "fast",
+    "why": "slide pictures lose their order"
+  },
+  {
+    "file": "tools/checks.py",
+    "old": "IMAGE.sub(\"\", markdown_text)))",
+    "new": "markdown_text))",
+    "lane": "fast",
+    "why": "picture alt text counts as blog words"
+  }
+]

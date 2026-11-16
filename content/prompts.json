@@ -1,0 +1,11 @@
+{
+  "blog": {
+    "formula": "CO-STAR",
+    "context": "Harcama Takip Paneli tarayıcıda çalışan, hesap istemeyen, ücretsiz bir harcama takip uygulaması. Okur, maaşla yaşayan ve ay sonunu zor getiren 27 yaşındaki Deniz.",
+    "objective": "\"harcama takibi\" diye arama yapan okura 5 adımda ayın resmini çıkarmayı öğreten bir blog yazısı yaz.",
+    "style": "Marka sesi rehberine uy: \"siz\" hitabı, en çok 20 kelimelik cümleler, her adımda panelden somut bir örnek.",
+    "tone": "Sakin ve yargılamayan. İsraf, garanti, kesin tasarruf gibi ifadeler yok.",
+    "audience": "Finans bilgisi sınırlı, yazıyı telefondan okuyan 20-35 yaş arası çalışanlar ve öğrenciler.",
+    "response": "Markdown. Başlık en çok 60 karakter, meta açıklama 120-155 karakter, 1 H1, anahtar kelimeyi içeren H2'ler, 600-1200 kelime, sonda panel bağlantısı ve finansal tavsiye uyarısı. Kaynağı olmayan istatistik ya da sayı yok."
+  }
+}

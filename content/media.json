@@ -1,0 +1,136 @@
+{
+  "images": [
+    {
+      "id": "gorsel-1-ayin-resmi",
+      "theme": "dark",
+      "eyebrow": "AYIN RESMİ",
+      "headline": "Ay bitti, para nereye gitti?",
+      "body": "Kategori dağılımı ayın resmini tek ekranda gösterir.",
+      "screenshot": "breakdown-top",
+      "prompt": {
+        "role": "Harcama Takip Paneli'nin marka tasarımcısısın.",
+        "task": "Instagram gönderisi için kategori dağılımı kartını öne çıkaran bir görsel hazırla.",
+        "format": "1080x1080 PNG. Gece zemin, Kehribar üst başlık, Kâğıt renginde ana başlık; panelin gerçek ekran görüntüsünden kategori dağılımı kartının en büyük beş satırı. Segoe UI, başlık en çok 2 satır."
+      },
+      "alt": "Koyu zeminde \"Ay bitti, para nereye gitti?\" başlığı ve panelin kategori dağılımı kartından en büyük beş kategori."
+    },
+    {
+      "id": "gorsel-2-uc-aliskanlik",
+      "theme": "light",
+      "eyebrow": "KÜÇÜK ALIŞKANLIKLAR",
+      "headline": "Bütçeyi kolaylaştıran 3 küçük alışkanlık",
+      "items": [
+        "Harcamayı yaptığınız gün ekleyin.",
+        "Pazar akşamı 5 dakika ayın resmine bakın.",
+        "Panel %80 uyarısı verince planı gözden geçirin."
+      ],
+      "prompt": {
+        "role": "Harcama Takip Paneli'nin marka tasarımcısısın.",
+        "task": "X gönderisine eşlik eden, üç alışkanlığı numaralı liste olarak gösteren bir görsel hazırla.",
+        "format": "1080x1080 PNG. Kâğıt zemin, Gece başlık, Zümrüt numara daireleri, Sis renginde bağlantı. Her madde tek satır, başlık en çok 2 satır."
+      },
+      "alt": "Açık zeminde \"Bütçeyi kolaylaştıran 3 küçük alışkanlık\" başlığı ve numaralı alışkanlık listesi."
+    },
+    {
+      "id": "gorsel-3-veri-sizde",
+      "theme": "green",
+      "eyebrow": "VERİ SİZDE",
+      "headline": "Verileriniz tarayıcınızda kalır.",
+      "items": [
+        "Kurulum yok",
+        "Hesap yok",
+        "Veri sunucuya gitmez"
+      ],
+      "prompt": {
+        "role": "Harcama Takip Paneli'nin marka tasarımcısısın.",
+        "task": "LinkedIn gönderisi için gizlilik ilkesini üç kısa ifadeyle anlatan bir görsel hazırla.",
+        "format": "1080x1080 PNG. Zümrüt zemin, beyaz yazı, Kâğıt renginde \"Paneli açın\" düğmesi ve bağlantı. Abartı yok, simge olarak yalnız onay işareti."
+      },
+      "alt": "Yeşil zeminde \"Verileriniz tarayıcınızda kalır.\" başlığı, onay işaretli üç madde ve Paneli açın düğmesi."
+    }
+  ],
+  "video": {
+    "id": "tanitim-videosu",
+    "width": 1080,
+    "height": 1920,
+    "voice": "tr-TR-EmelNeural",
+    "rate": "+0%",
+    "min_seconds": 15,
+    "max_seconds": 20,
+    "prompt": {
+      "role": "Kısa dikey video senaryosu yazan bir marka editörüsün.",
+      "task": "Harcama Takip Paneli'ni 15-20 saniyede tanıtan, 5 sahnelik bir senaryo yaz: soru, kurulumsuz vaat, ekleme, ayın resmi, gizlilik ve çağrı. Ana vaat ilk 5 saniyede gelsin.",
+      "format": "Her sahnede ekrandaki metin ile seslendirme aynı cümle. Ekleme ve ayın resmi sahneleri panelin gerçek ekran kaydı. Ekran metni en çok 4 kısa satır. Marka sesi rehberine uy."
+    },
+    "scenes": [
+      {
+        "visual": "title",
+        "text": "Ay bitti.\nPara nereye gitti?",
+        "narration": "Ay bitti. Para nereye gitti?"
+      },
+      {
+        "visual": "promise",
+        "text": "Harcama Takip Paneli\ntarayıcıda açılır.\nKurulum yok, hesap yok.",
+        "narration": "Harcama Takip Paneli tarayıcıda açılır. Kurulum yok, hesap yok."
+      },
+      {
+        "visual": "form",
+        "text": "Tutarı yazın,\nkategoriyi seçin,\nekleyin.",
+        "narration": "Tutarı yazın, kategoriyi seçin, ekleyin."
+      },
+      {
+        "visual": "breakdown",
+        "text": "Ayın resmi tek ekranda:\nbütçe ve kategoriler.",
+        "narration": "Ayın resmi tek ekranda: bütçe ve kategoriler."
+      },
+      {
+        "visual": "cta",
+        "text": "Verileriniz\nsunucuya gitmez.\nPaneli açın,\nbağlantı profilde.",
+        "narration": "Verileriniz sunucuya gitmez. Paneli açın, bağlantı profilde."
+      }
+    ]
+  },
+  "voiceover": {
+    "id": "seslendirme",
+    "voice": "tr-TR-EmelNeural",
+    "rate": "+0%",
+    "min_seconds": 20,
+    "max_seconds": 30,
+    "prompt": {
+      "role": "Harcama Takip Paneli'nin sesli içerik editörüsün.",
+      "task": "Pazar akşamı yapılacak 5 dakikalık bütçe kontrolünü anlatan kısa bir sesli hatırlatma yaz: ayın resmine bakmak, eksik kalanı eklemek, kalan bütçeyi görmek.",
+      "format": "Yaklaşık 25 saniyelik metin; sayıları yazıyla yaz, cümleler kısa, sonda marka sloganı. Marka sesi rehberine uy."
+    },
+    "script": "Pazar akşamı için beş dakikalık bir bütçe kontrolü. Önce kategori dağılımına bakın: para en çok nereye gitti? Hafta içinde eklemeyi unuttuğunuz bir harcama varsa şimdi ekleyin. Ardından aylık bütçenin ne kadarının kaldığını kontrol edin. Harcama bütçenin yüzde seksenine ulaştıysa panel sizi zaten uyarır. Hepsi bu kadar. Harcama Takip Paneli'ni açın, paranızın nereye gittiğini görün."
+  },
+  "stories": [
+    {
+      "id": "hikaye-anket",
+      "kind": "poll",
+      "eyebrow": "AYIN RESMİ",
+      "question": "Kira ve faturalar dışında bu ay en çok nereye harcadınız?",
+      "options": [
+        "Market",
+        "Yeme içme",
+        "Ulaşım",
+        "Diğer"
+      ],
+      "hint": "Cevabınız gelecek haftanın içeriğini seçer.",
+      "alt": "Koyu zeminde anket sorusu; seçenekler Instagram'ın anket çıkartmasıyla eklenir."
+    },
+    {
+      "id": "hikaye-pazar",
+      "kind": "audio",
+      "eyebrow": "KÜÇÜK ALIŞKANLIKLAR",
+      "headline": "Pazar akşamı 5 dakikalık bütçe kontrolü",
+      "items": [
+        "Kategori dağılımına bakın.",
+        "Eksik harcamayı ekleyin.",
+        "Kalan bütçeyi görün."
+      ],
+      "link": "Paneli açın: bağlantı çıkartmada.",
+      "disclosure": "Seslendirme yapay sesle üretildi.",
+      "alt": "Açık zeminde pazar akşamı bütçe kontrolünün adımları ve seslendirmenin ilerleme çubuğu."
+    }
+  ]
+}

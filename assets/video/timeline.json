@@ -1,0 +1,67 @@
+{
+  "source": "https://axelxoket.github.io/expense-tracker-dashboard/?ornek",
+  "amount": "250,00",
+  "category": "Market",
+  "form": [
+    {
+      "file": "form-01.png",
+      "seconds": 0.4,
+      "still": false
+    },
+    {
+      "file": "form-02.png",
+      "seconds": 0.25,
+      "still": false
+    },
+    {
+      "file": "form-03.png",
+      "seconds": 0.12,
+      "still": false
+    },
+    {
+      "file": "form-04.png",
+      "seconds": 0.12,
+      "still": false
+    },
+    {
+      "file": "form-05.png",
+      "seconds": 0.12,
+      "still": false
+    },
+    {
+      "file": "form-06.png",
+      "seconds": 0.12,
+      "still": false
+    },
+    {
+      "file": "form-07.png",
+      "seconds": 0.12,
+      "still": false
+    },
+    {
+      "file": "form-08.png",
+      "seconds": 0.12,
+      "still": false
+    },
+    {
+      "file": "form-09.png",
+      "seconds": 0.45,
+      "still": false
+    },
+    {
+      "file": "form-10.png",
+      "seconds": 0.35,
+      "still": true
+    },
+    {
+      "file": "form-11.png",
+      "seconds": 0.5,
+      "still": false
+    }
+  ],
+  "pan": {
+    "file": "page-after.png",
+    "top": 1666,
+    "bottom": 3138
+  }
+}

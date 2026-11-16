@@ -1,0 +1,31 @@
+{
+  "rights": {
+    "text": "Metinler bu proje için yazıldı; alıntı ya da başka bir kaynaktan kopya yok.",
+    "image_screenshot": "Panelin kendi ekran görüntüsü, düz renkler ve basit şekiller; yazı tipi Segoe UI (Windows sistem yazı tipi). Stok fotoğraf, logo taklidi ya da kişi görseli yok.",
+    "image": "Düz renkler, basit şekiller ve Segoe UI (Windows sistem yazı tipi). Stok fotoğraf, logo taklidi ya da kişi görseli yok.",
+    "video": "Metin sahneleri bu projenin şablonlarından; ekleme ve ayın resmi sahneleri panelin gerçek ekran kaydı. Ses, Seslendirme satırındaki hizmetten. Müzik yok.",
+    "audio": "Ses Microsoft Edge'in çevrimiçi sesli okuma hizmetiyle (edge-tts, tr-TR-EmelNeural) üretildi. Açık madde: ücretli reklamda kullanılacaksa yayından önce hizmetin kullanım koşulları gözden geçirilmeli.",
+    "story": "Düz renkler, basit şekiller ve Segoe UI (Windows sistem yazı tipi). Stok fotoğraf, logo taklidi ya da kişi görseli yok.",
+    "story_audio": "Kart düz şekiller ve Segoe UI; ses, Seslendirme satırındaki hizmetten. Hikâyede \"Seslendirme yapay sesle üretildi.\" notu var."
+  },
+  "facts": {
+    "product": "Yayımlanan parçalardaki her ürün iddiası brand/brand.json içinde panelin kaynak dosyası ve satırıyla duruyor; testler her satırın o dosyada durduğunu doğrular. Hangi parçanın hangi iddiayı taşıdığı aşağıdaki tabloda.",
+    "competitors": "Rakip bilgileri üretici sayfalarından ve App Store listelerinden alındı; her satırın kaynağı ve erişim tarihi brand/competitors.json içinde.",
+    "numbers": "Yayımlanan metinlerdeki her sayı, yazıyla yazılanlar dahil, yanındaki kelimeyle birlikte otomatik denetlendi: ya kanıtlı bir ürün olgusu ya da \"öneri\" diye etiketlenmiş kendi sayımız."
+  },
+  "ethics": "Finansal ya da yatırım tavsiyesi verilmez; blogda uyarı yazar. Okuru utandıran ya da söz veren ifade yok. Persona kurgusaldır, gerçek bir kişiyi anlatmaz.",
+  "consistency": [
+    "Alışkanlık önerisi her parçada aynı: harcamayı aynı gün ekleyin, pazar akşamı ayın resmine bakıp eksik kalanı ekleyin.",
+    "Videoda ekrandaki yazı ile ses aynı cümle; derleme bunu her sahnede denetler.",
+    "Her parçanın çağrısı takvimdekiyle aynı; gizlilik her yerde aynı anlamla anlatılır: veri tarayıcıda kalır, sunucuya gitmez."
+  ],
+  "rights_short": {
+    "text": "Özgün metin",
+    "image_screenshot": "Panel görüntüsü, düz şekiller",
+    "image": "Düz şekiller, sistem yazı tipi",
+    "video": "Şablon ve gerçek ekran kaydı",
+    "audio": "TTS; açık madde",
+    "story": "Düz şekiller, sistem yazı tipi",
+    "story_audio": "TTS; açık madde"
+  }
+}

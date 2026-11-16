@@ -1,0 +1,551 @@
+{
+  "name": "Harcama Takip Paneli",
+  "tagline": "Paranızın nereye gittiğini görün.",
+  "app_url": "https://axelxoket.github.io/expense-tracker-dashboard/",
+  "short_url": "axelxoket.github.io/expense-tracker-dashboard",
+  "sample_url": "https://axelxoket.github.io/expense-tracker-dashboard/?ornek",
+  "source_url": "https://github.com/AxelXoket/expense-tracker-dashboard",
+  "sector": "Kişisel finans ve bütçe uygulamaları",
+  "product": "Tarayıcıda çalışan, hesap istemeyen bir harcama takip paneli. Harcamaları kategoriyle kaydeder, ayın dağılımını ve aylık bütçeyi gösterir, listeyi CSV olarak verir.",
+  "palette": [
+    {
+      "name": "Zümrüt",
+      "hex": "#007A55",
+      "role": "Düğmeler, vurgular ve logo için ana renk"
+    },
+    {
+      "name": "Gece",
+      "hex": "#0F172B",
+      "role": "Başlıklar ve koyu zemin"
+    },
+    {
+      "name": "Kâğıt",
+      "hex": "#F8FAFC",
+      "role": "Açık zemin"
+    },
+    {
+      "name": "Kehribar",
+      "hex": "#FE9A00",
+      "role": "Koyu zeminde üst başlık; panelin koyu temasında yaklaşan bütçe uyarısı"
+    },
+    {
+      "name": "Sis",
+      "hex": "#62748E",
+      "role": "İkincil metin ve çizgiler"
+    }
+  ],
+  "text_pairs": [
+    {
+      "text": "#FFFFFF",
+      "background": "#007A55"
+    },
+    {
+      "text": "#0F172B",
+      "background": "#F8FAFC"
+    },
+    {
+      "text": "#F8FAFC",
+      "background": "#0F172B"
+    },
+    {
+      "text": "#0F172B",
+      "background": "#FE9A00"
+    },
+    {
+      "text": "#62748E",
+      "background": "#F8FAFC"
+    },
+    {
+      "text": "#007A55",
+      "background": "#F8FAFC"
+    },
+    {
+      "text": "#FE9A00",
+      "background": "#0F172B"
+    },
+    {
+      "text": "#FFFFFF",
+      "background": "#62748E"
+    }
+  ],
+  "values": [
+    {
+      "name": "Gizlilik",
+      "line": "Verileriniz tarayıcınızda kalır; hesap ve banka bağlantısı yok, veri sunucuya gitmez."
+    },
+    {
+      "name": "Sadelik",
+      "line": "Kurulum ve kayıt yok; sayfa açılır açılmaz ilk harcamanızı ekleyebilirsiniz."
+    },
+    {
+      "name": "Dürüst sayılar",
+      "line": "Kuruş kuruş hesap; yuvarlanmış paylar bile tam %100,0 eder."
+    },
+    {
+      "name": "Herkes için",
+      "line": "Klavyeyle ve ekran okuyucuyla kullanılır; açık ve koyu tema vardır."
+    }
+  ],
+  "visual_style": [
+    "Düz renk zemin, bol boşluk; ana vurgu Zümrüt, koyu zeminde üst başlık Kehribar.",
+    "Yazı Segoe UI; başlıklar kalın, gövde normal ağırlıkta.",
+    "Gerçek ekran görüntüleri; stok fotoğraf ve yapay zeka ile çizilmiş yazı yok.",
+    "Kategori renkleri uygulamadaki rozetlerle aynıdır."
+  ],
+  "why_who_what_how": {
+    "neden": "Harcama kaydı tutmak yorucu geliyor; banka hesabı bağlamak isteyen uygulamalar da gizlilik kaygısı yaratıyor. Amaç, kimseye veri vermeden ayın resmini görmek.",
+    "kime": "Türkiye'de maaşla ya da bursla yaşayan, ayı bütçeyle yönetmek isteyen 20-35 yaş arası kişiler.",
+    "ne": "Hesapsız, ücretsiz, Türkçe biçimli bir harcama takip paneli: kategori dağılımı, aylık bütçe, CSV.",
+    "nasil": "Sade ve yargılamayan bir dille, somut adımlarla ve uygulamanın gerçek ekranlarıyla."
+  },
+  "persona": {
+    "name": "Deniz",
+    "age": 27,
+    "city": "İzmir",
+    "job": "Bir yazılım firmasında müşteri destek uzmanı",
+    "story": "Maaşını ayın başında alıyor ve ay sonunu zor getiriyor. Banka uygulamasının harcama analizini karışık buluyor, bir uygulamaya banka şifresini vermek istemiyor.",
+    "needs": [
+      "Ayın nereye gittiğini tek ekranda görmek",
+      "Bütçeyi aşmadan önce uyarı almak",
+      "Verisinin kendinde kalması"
+    ],
+    "channels": [
+      "Instagram",
+      "LinkedIn",
+      "X",
+      "Blog",
+      "YouTube Shorts"
+    ]
+  },
+  "pillars": [
+    {
+      "id": "ayin-resmi",
+      "name": "Ayın Resmi",
+      "goal": "Harcamayı görünür kılmak: kategori dağılımı, aylık özet."
+    },
+    {
+      "id": "kucuk-aliskanliklar",
+      "name": "Küçük Alışkanlıklar",
+      "goal": "Bütçeyi kolaylaştıran haftalık ve günlük alışkanlıklar."
+    },
+    {
+      "id": "veri-sizde",
+      "name": "Veri Sizde",
+      "goal": "Gizlilik: hesap yok, veri sunucuya gitmez, dışa aktarma sizde."
+    },
+    {
+      "id": "panelden-nasil",
+      "name": "Panelde Nasıl Yapılır",
+      "goal": "Ürünün özelliklerini kısa nasıl yapılır içerikleriyle göstermek."
+    }
+  ],
+  "voice": {
+    "summary": "Sakin bir arkadaş gibi: sade, yargılamayan, somut. Okuru suçlamaz, sözü büyütmez, bir sonraki adımı söyler.",
+    "address": "siz",
+    "max_sentence_words": 20,
+    "do": [
+      "Okura \"siz\" diye seslenin.",
+      "Her öneriyi bir adımla ya da ekrandaki bir yerle bağlayın.",
+      "Cümleyi kısa tutun: en çok 20 kelime.",
+      "Sayı kullanacaksanız ürünün gerçek davranışından ya da kaynaklı bir veriden alın."
+    ],
+    "dont": [
+      "Harcayan kişiyi utandırmayın: israf, savurgan, suçlu gibi kelimeler yok.",
+      "Söz vermeyin: zengin olma, garanti, kesin tasarruf yok.",
+      "Yatırım ya da kredi önerisi vermeyin.",
+      "Abartı yok: devrim, inanılmaz, mükemmel yok."
+    ],
+    "use": [
+      "harcama",
+      "bütçe",
+      "kategori",
+      "ayın resmi",
+      "verileriniz",
+      "tarayıcınızda",
+      "sade"
+    ],
+    "avoid": [
+      "israf",
+      "savurgan",
+      "suçlu",
+      "garanti",
+      "zengin",
+      "kesin",
+      "devrim",
+      "inanılmaz",
+      "mükemmel",
+      "budget",
+      "track"
+    ],
+    "channels": [
+      {
+        "channel": "Blog",
+        "tone": "Adım adım anlatır; her adım panelde bir yere bağlanır. Sonunda finansal tavsiye uyarısı."
+      },
+      {
+        "channel": "Instagram",
+        "tone": "Kısa satırlar; görselle aynı başlık, sonda tek çağrı."
+      },
+      {
+        "channel": "LinkedIn",
+        "tone": "Birinci tekil şahıs; bir tasarım kararını ve nedenini anlatır."
+      },
+      {
+        "channel": "X",
+        "tone": "Tek fikir, tek çağrı, bir bağlantı."
+      },
+      {
+        "channel": "Video",
+        "tone": "Ekrandaki yazı ile ses aynı cümledir; ana vaat ilk sahnelerde gelir."
+      },
+      {
+        "channel": "Seslendirme",
+        "tone": "Kısa cümleler; sayılar yazıyla okunur; sonda tek çağrı."
+      }
+    ],
+    "situations": [
+      {
+        "situation": "İlk ziyaret",
+        "tone": "Karşılar ve ilk adımı söyler.",
+        "example": "Henüz harcama eklemediniz."
+      },
+      {
+        "situation": "Bütçe yaklaşıyor",
+        "tone": "Sakin uyarı; suçlamaz, durumu söyler.",
+        "example": "Bütçenin sonuna yaklaştınız."
+      },
+      {
+        "situation": "Ay sonu sıkışıklığı",
+        "tone": "Yargılamaz; tek küçük adım önerir.",
+        "example": "Bu ay zor geçtiyse önce en büyük kategoriye bakın."
+      },
+      {
+        "situation": "Bütçe aşıldı",
+        "tone": "Düz bilgi; tutarı söyler, yorum katmaz.",
+        "example": "Bütçe [tutar] aşıldı (%[oran])."
+      },
+      {
+        "situation": "Yanlış silme",
+        "tone": "Rahatlatır; geri dönüş yolunu gösterir.",
+        "example": "Harcama silindi: [harcama]. Geri al"
+      }
+    ],
+    "mechanics": [
+      "Para: panelde ₺1.250,50; metinde 1.250,50 TL. Kuruş virgülle, binlik noktayla.",
+      "Tarih: 23 Kasım 2026; kısa biçimi 23.11.2026.",
+      "Yüzde: %80; işaret sayının önünde.",
+      "Ünlem ve emoji yok; soru işareti yalnız gerçek bir soruda.",
+      "Jargon yok: budget, track, dashboard yerine bütçe, takip, panel.",
+      "Her görselin alt metni var; ne gösterdiğini tek cümleyle söyler."
+    ],
+    "cta_note": "Instagram'da adres tıklanmaz: gönderide ve videoda \"bağlantı profilde\", hikâyede bağlantı çıkartması."
+  },
+  "facts": [
+    {
+      "value": "6",
+      "forms": [
+        "6 saniye"
+      ],
+      "claim": "Silinen harcama 6 saniye içinde Geri al ile geri gelir.",
+      "evidence": "expense-tracker-dashboard/src/components/UndoToast.jsx",
+      "line": "export const UNDO_MS = 6000",
+      "id": "geri-al-6-saniye",
+      "label": "Geri al 6 saniye"
+    },
+    {
+      "value": "10",
+      "forms": [
+        "10 kategori"
+      ],
+      "claim": "Panelde 10 kategori vardır.",
+      "evidence": "expense-tracker-dashboard/src/lib/categories.js",
+      "line": "export const CATEGORIES = [",
+      "id": "10-kategori",
+      "label": "10 kategori"
+    },
+    {
+      "value": "80",
+      "forms": [
+        "%80 ulaş",
+        "%80 uyarı"
+      ],
+      "claim": "Harcama bütçenin %80'ine ulaşınca panel uyarır.",
+      "evidence": "expense-tracker-dashboard/src/components/BudgetCard.jsx",
+      "line": "export const NEAR_BUDGET_PERCENT = 80",
+      "id": "butce-uyarisi-80",
+      "label": "%80 bütçe uyarısı"
+    },
+    {
+      "value": "100,0",
+      "forms": [
+        "%100,0 eder"
+      ],
+      "claim": "Kategori payları tek ondalıkla yazılır ve toplamı tam %100,0 eder.",
+      "evidence": "expense-tracker-dashboard/src/lib/expenses.js",
+      "line": "let left = 1000 - shares.reduce((sum, share) => sum + share, 0);",
+      "id": "paylar-100",
+      "label": "Paylar toplamı %100,0"
+    },
+    {
+      "value": "0,1",
+      "forms": [
+        "%0,1 olarak"
+      ],
+      "claim": "Sıfıra yuvarlanan pay \"<%0,1\" olarak yazılır, kaybolmaz.",
+      "evidence": "expense-tracker-dashboard/src/lib/expenses.js",
+      "line": "\"<%0,1\"",
+      "id": "en-kucuk-pay",
+      "label": "En küçük pay <%0,1"
+    },
+    {
+      "value": "4",
+      "forms": [
+        "4 bilgi"
+      ],
+      "claim": "Bir harcama dört bilgiyle girilir: tutar, tarih, kategori ve isteğe bağlı not.",
+      "evidence": "expense-tracker-dashboard/src/components/ExpenseForm.jsx",
+      "line": "date: editing.date, note: editing.note",
+      "id": "dort-bilgi",
+      "label": "Dört bilgiyle giriş"
+    }
+  ],
+  "own_numbers": [
+    {
+      "value": "5",
+      "forms": [
+        "5 dakika",
+        "5 adım",
+        "5 sade",
+        "5 sahne",
+        "5.",
+        "5 kategori"
+      ],
+      "meaning": "Haftalık kontrol için önerilen 5 dakika, blogdaki 5 adım ve videonun 5 sahnesi. Öneri ve sayımdır, ölçüm değildir. Instagram görselinde gösterilen en büyük 5 kategori de bu sayıdır."
+    },
+    {
+      "value": "3",
+      "forms": [
+        "3 küçük",
+        "3 madde",
+        "3."
+      ],
+      "meaning": "Üç küçük alışkanlık önerisi; listedeki madde sayısı."
+    },
+    {
+      "value": "1",
+      "forms": [
+        "1."
+      ],
+      "meaning": "Adım ya da madde sırası."
+    },
+    {
+      "value": "2",
+      "forms": [
+        "2.",
+        "2 ayrı",
+        "2 kategori"
+      ],
+      "meaning": "Adım sırası ve blogdaki iki seçenekli örnekler (iki liste, iki kategori)."
+    },
+    {
+      "value": "4",
+      "forms": [
+        "4."
+      ],
+      "meaning": "Adım ya da madde sırası."
+    },
+    {
+      "value": "27",
+      "forms": [
+        "27 yaş"
+      ],
+      "meaning": "Persona Deniz'in yaşı. Kurgusal."
+    },
+    {
+      "value": "20",
+      "forms": [
+        "20 kelime",
+        "20-35 yaş"
+      ],
+      "meaning": "Hedef kitle yaş aralığının alt sınırı ve en uzun cümle sınırı (20 kelime)."
+    },
+    {
+      "value": "35",
+      "forms": [
+        "20-35 yaş"
+      ],
+      "meaning": "Hedef kitle yaş aralığının üst sınırı."
+    },
+    {
+      "value": "1.250,50",
+      "forms": [
+        "1.250,50"
+      ],
+      "meaning": "Tutarın Türkçe yazılış örneği; ölçüm değildir."
+    }
+  ],
+  "cta": {
+    "primary": "Paneli açın",
+    "sample": "Örnek verilerle deneyin"
+  },
+  "disclaimer": "Bu içerik genel bilgi verir; finansal ya da yatırım tavsiyesi değildir.",
+  "measures": {
+    "note": "Panelde ziyaretçi takibi yok; bu, gizlilik değerinin parçası. Etki yalnız kanalların kendi istatistikleriyle ölçülür ve her hafta aynı gün okunur. İlk haftanın değerleri taban olur; sonraki haftalar ona göre karşılaştırılır.",
+    "channels": [
+      {
+        "channel": "Blog",
+        "metric": "Arama gösterimi ve tıklama (Google Search Console)"
+      },
+      {
+        "channel": "Instagram (gönderi, hikâye, Reels)",
+        "metric": "Kaydetme ve paylaşım; hikâye anketinde yanıt sayısı"
+      },
+      {
+        "channel": "LinkedIn",
+        "metric": "Yorum ve profil ziyareti"
+      },
+      {
+        "channel": "X",
+        "metric": "Bağlantı tıklaması"
+      },
+      {
+        "channel": "YouTube Shorts",
+        "metric": "İzlenme süresi oranı"
+      }
+    ]
+  },
+  "product_claims": [
+    {
+      "claim": "Geri al düğmesinin üzerindeyken ya da odaktayken süre işlemez.",
+      "evidence": "expense-tracker-dashboard/src/components/UndoToast.jsx",
+      "line": "if (focused || hovered) return undefined;",
+      "id": "geri-al-durur",
+      "label": "Geri al süresi durur",
+      "phrases": [
+        "süre işlemez"
+      ]
+    },
+    {
+      "claim": "Harcama eklendikten sonra kategori ve tarih dolu kalır.",
+      "evidence": "expense-tracker-dashboard/src/components/ExpenseForm.jsx",
+      "line": "...current, amount: \"\", note: \"\"",
+      "id": "form-dolu-kalir",
+      "label": "Kategori ve tarih dolu kalır",
+      "phrases": [
+        "dolu kalır"
+      ]
+    },
+    {
+      "claim": "CSV noktalı virgülle ayrılır ve Excel'in Türkçe karakterleri tanıması için BOM ile başlar.",
+      "evidence": "expense-tracker-dashboard/src/lib/expenses.js",
+      "line": "row.map(csvField).join(\";\")",
+      "id": "csv",
+      "label": "CSV, Türkçe Excel için",
+      "phrases": [
+        "csv"
+      ]
+    },
+    {
+      "claim": "Üstte ayın toplamı, harcama sayısı, günlük ortalama ve en çok harcanan kategori görünür.",
+      "evidence": "expense-tracker-dashboard/src/components/SummaryCards.jsx",
+      "line": "\"En çok harcanan\"",
+      "id": "ozet-kartlari",
+      "label": "Üstte ayın özeti",
+      "phrases": [
+        "günlük ortalama",
+        "en çok harcanan"
+      ]
+    },
+    {
+      "claim": "Liste kategoriye göre süzülür, tarihe ya da tutara göre sıralanır.",
+      "evidence": "expense-tracker-dashboard/src/lib/expenses.js",
+      "line": "\"amount-desc\": { label: \"Tutar (büyükten küçüğe)\"",
+      "id": "suzme-siralama",
+      "label": "Süzme ve sıralama",
+      "phrases": [
+        "süzebilir",
+        "sıralayabilir"
+      ]
+    },
+    {
+      "claim": "Bütçenin %80'inde \"Bütçenin sonuna yaklaştınız.\" yazar; bütçe aşılınca aşım tutarını yazar.",
+      "evidence": "expense-tracker-dashboard/src/components/BudgetCard.jsx",
+      "line": "Bütçenin sonuna yaklaştınız.",
+      "id": "butce-mesajlari",
+      "label": "Bütçe uyarısı ve aşım",
+      "phrases": [
+        "sonuna yaklaştınız",
+        "aşımı"
+      ]
+    },
+    {
+      "claim": "Veriler tarayıcının yerel deposunda kalır; panel hesap istemez ve hiçbir sunucuya veri göndermez.",
+      "evidence": "expense-tracker-dashboard/src/main.jsx",
+      "line": "return window.localStorage;",
+      "id": "veri-tarayicida",
+      "label": "Veri tarayıcıda, hesap yok",
+      "phrases": [
+        "sunucu",
+        "tarayıcınızda",
+        "hesap yok",
+        "hesap istem",
+        "giriş yok",
+        "banka bağlantısı yok"
+      ]
+    },
+    {
+      "claim": "Adrese ?ornek eklenince boş panel örnek harcamalarla açılır.",
+      "evidence": "expense-tracker-dashboard/src/main.jsx",
+      "line": ".has(\"ornek\")",
+      "id": "ornek-veri",
+      "label": "Örnek verilerle açılış",
+      "phrases": [
+        "örnek verilerle"
+      ]
+    },
+    {
+      "id": "kurulum-yok",
+      "label": "Kurulum yok, tarayıcıda açılır",
+      "claim": "Panel bir web sayfasıdır; kurulum istemez, tarayıcıda açılır.",
+      "evidence": "expense-tracker-dashboard/README.md",
+      "line": "**Canlı:** https://axelxoket.github.io/expense-tracker-dashboard/",
+      "phrases": [
+        "kurulum",
+        "tarayıcıda açılır"
+      ]
+    },
+    {
+      "id": "kaynak-acik",
+      "label": "Kaynak kodu açık",
+      "claim": "Panelin kaynak kodu GitHub'da herkese açık bir depodadır.",
+      "evidence": "expense-tracker-dashboard/README.md",
+      "line": "**Kaynak kod:** https://github.com/AxelXoket/expense-tracker-dashboard",
+      "phrases": [
+        "kaynak kod"
+      ]
+    },
+    {
+      "id": "kalan-butce",
+      "label": "Kalan bütçe ve yüzde",
+      "claim": "Bütçe kartı kalan tutarı ve kullanılan yüzdeyi gösterir.",
+      "evidence": "expense-tracker-dashboard/src/components/BudgetCard.jsx",
+      "line": "{formatKurus(status.remaining)} kaldı (%{status.percent} kullanıldı).",
+      "phrases": [
+        "kalan tutar",
+        "kaldığını",
+        "kalan bütçe"
+      ]
+    },
+    {
+      "id": "tutar-bicimi",
+      "label": "Türkçe tutar girişi",
+      "claim": "Tutar Türkçe biçimde yazılabilir, örneğin 1.250,50.",
+      "evidence": "expense-tracker-dashboard/src/lib/money.js",
+      "line": "export function parseAmount(text) {",
+      "phrases": [
+        "1.250,50"
+      ]
+    }
+  ],
+  "story": "Harcama Takip Paneli tek bir soruya cevap vermek için yapıldı: ay bitince para nereye gitti? Hesap açtırmadan, banka şifresi istemeden, tarayıcıda açılan sade bir panel. Marka bu sözün arkasında durur: veri kullanıcıda kalır, sayılar kuruş kuruş doğrudur, ton suçlamaz."
+}

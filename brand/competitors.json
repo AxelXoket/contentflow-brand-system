@@ -1,0 +1,86 @@
+{
+  "accessed": "2026-11-16",
+  "note": "Fiyatlar App Store Türkiye sayfalarındaki gibidir (TL); dönemi yazmayan seçenekler aralık olarak verildi. Bulunamayan bilgi tahminle doldurulmadı.",
+  "apps": [
+    {
+      "name": "Spendee",
+      "account": "Kayıt akışı var: Apple, Google, Facebook ya da e-posta",
+      "bank": "Premium'da; 9.000'den fazla banka (Salt Edge, Plaid). Türkiye sayfası 404 veriyor (spendee.com/banks/tr/).",
+      "data": "Üreticinin bulutu (Google Cloud), şifreli",
+      "price": "Ücretsiz katman var; Plus 129,99 TL/ay, Premium 229,99 TL/ay, ömür boyu 4.999,99 TL",
+      "turkish": "Var",
+      "sources": [
+        "https://www.spendee.com/pricing/",
+        "https://www.spendee.com/bank-connect",
+        "https://www.spendee.com/help/security/",
+        "https://apps.apple.com/tr/app/id635861140"
+      ]
+    },
+    {
+      "name": "Wallet (BudgetBakers)",
+      "account": "Facebook ya da e-postayla giriş",
+      "bank": "15.000'den fazla kurum, PSD2 lisanslı; ülke listesi yayımlanmamış",
+      "data": "Üreticinin bulutu (AWS), eşitlenir",
+      "price": "Ücretsiz; Premium 249,99-1.499,99 TL, ömür boyu 2.499,99 TL",
+      "turkish": "Var",
+      "sources": [
+        "https://budgetbakers.com/en/products/wallet/features/bank-sync/",
+        "https://budgetbakers.com/en/security/",
+        "https://apps.apple.com/tr/app/id1032467659"
+      ]
+    },
+    {
+      "name": "Money Manager (Realbyte)",
+      "account": "Bilgi bulunamadı",
+      "bank": "Yok",
+      "data": "Cihazda; isteğe bağlı yedek ve ücretli eşitleme",
+      "price": "Ücretsiz; eşitleme 37,99 TL/ay ya da 349,99 TL/yıl",
+      "turkish": "iOS'ta var",
+      "sources": [
+        "https://realbyteapps.com/",
+        "https://play.google.com/store/apps/details?id=com.realbyteapps.moneymanagerfree",
+        "https://apps.apple.com/tr/app/id560481810"
+      ]
+    },
+    {
+      "name": "YNAB",
+      "account": "Deneme için kayıt gerekir",
+      "bank": "Seçili ABD, Kanada, Birleşik Krallık ve AB bankaları; Türkiye listede yok",
+      "data": "Üreticinin bulutu, şifreli",
+      "price": "Ücretsiz katman yok, deneme var; abonelik 179,99 TL ya da 3.999,99 TL",
+      "turkish": "Yok (App Store dil listesi yalnız İngilizce)",
+      "sources": [
+        "https://www.ynab.com/pricing",
+        "https://support.ynab.com/en_us/direct-import-in-europe-Syae1z_A9.md",
+        "https://www.ynab.com/security",
+        "https://apps.apple.com/tr/app/id1010865877"
+      ]
+    },
+    {
+      "name": "Monefy",
+      "account": "Bilgi bulunamadı",
+      "bank": "Yok; banka girişi istemez",
+      "data": "Cihazda ya da kişinin kendi Google Drive / Dropbox alanında",
+      "price": "Ücretsiz; Premium 699,99-2.299,99 TL",
+      "turkish": "iOS'ta var",
+      "sources": [
+        "https://www.monefy.com/",
+        "https://apps.apple.com/tr/app/id1212024409"
+      ]
+    }
+  ],
+  "ours": {
+    "name": "Harcama Takip Paneli",
+    "account": "Yok",
+    "bank": "Yok",
+    "data": "Yalnız tarayıcıda",
+    "price": "Ücretsiz",
+    "turkish": "Türkçe; tutar, tarih ve CSV Türkçe biçimde"
+  },
+  "gap": [
+    "Beş rakibin üçü veriyi üreticinin bulutunda saklar ve hesap ister. Banka bağlantısı sunan bu üç rakipten hiçbiri Türkiye'deki bankaları desteklediğini yayımlamıyor.",
+    "Cihazda saklayan rakipler (Monefy, Money Manager) mobil uygulamadır; kurulum ister.",
+    "Deniz'in bugünkü araçları da yetmiyor: banka uygulaması tek kartı gösterir, tablo hesabı ve grafiği ona bırakır.",
+    "Boşluk: kurulumsuz, hesapsız, verisi tarayıcıda kalan ve Türkçe biçimlerle çalışan sade bir web paneli."
+  ]
+}

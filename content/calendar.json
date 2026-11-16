@@ -1,0 +1,93 @@
+[
+  {
+    "date": "2026-11-23",
+    "channel": "Blog",
+    "format": "SEO blog yazısı",
+    "topic": "Harcama takibi nasıl yapılır? 5 adımda ayın resmi",
+    "pillar": "panelden-nasil",
+    "goal": "Aramadan gelen okuru panele taşımak",
+    "cta": "Paneli açın",
+    "rationale": "Deniz ay sonunu zor getiriyor ve çözümü önce arama motorunda arıyor. Haftanın temel içeriği bu yazı; öteki gönderiler aynı adımları kısaltarak anlatır.",
+    "piece": "blog",
+    "status": "Hazır",
+    "time": "09:00"
+  },
+  {
+    "date": "2026-11-24",
+    "channel": "Instagram",
+    "format": "Görsel gönderi",
+    "topic": "Ay bitti, para nereye gitti?",
+    "pillar": "ayin-resmi",
+    "goal": "Kategori dağılımını tanıtmak",
+    "cta": "Paneli açın",
+    "rationale": "Deniz'in ilk sorusu paranın nereye gittiği. Ayın resmini tek görselde göstermek bu soruya doğrudan cevap verir.",
+    "piece": "instagram-ayin-resmi",
+    "status": "Hazır",
+    "time": "20:30"
+  },
+  {
+    "date": "2026-11-25",
+    "channel": "LinkedIn",
+    "format": "Metin ve görsel",
+    "topic": "Veri sizde: hesap istemeyen tasarım",
+    "pillar": "veri-sizde",
+    "goal": "Gizlilik farkıyla güven kurmak",
+    "cta": "Örnek verilerle deneyin",
+    "rationale": "Deniz banka şifresini bir uygulamaya vermek istemiyor. İş ağında gizlilik ilkesini anlatmak, rakiplerden ayrılan noktayı öne çıkarır.",
+    "piece": "linkedin-veri-sizde",
+    "status": "Hazır",
+    "time": "08:30"
+  },
+  {
+    "date": "2026-11-26",
+    "channel": "YouTube Shorts ve Instagram Reels",
+    "format": "Dikey kısa video",
+    "topic": "Panel kısa videoda: kurulum yok, ekle, gör",
+    "pillar": "panelden-nasil",
+    "goal": "Ürünü hareket hâlinde göstermek",
+    "cta": "Paneli açın",
+    "rationale": "Deniz kısa videoları telefonda izliyor. Videoda panel gerçekten kullanılıyor: bir harcama eklenir, bütçe ve kategori dağılımı hemen değişir.",
+    "piece": "tanitim-videosu",
+    "status": "Hazır",
+    "time": "19:30"
+  },
+  {
+    "date": "2026-11-27",
+    "channel": "X",
+    "format": "Kısa gönderi ve görsel",
+    "topic": "Bütçeyi kolaylaştıran 3 küçük alışkanlık",
+    "pillar": "kucuk-aliskanliklar",
+    "goal": "Hafta sonu kontrolüne çağırmak",
+    "cta": "Paneli açın",
+    "rationale": "Hafta sonu öncesi kısa bir hatırlatma, Deniz'in pazar akşamı kontrolünü planlamasına yardım eder.",
+    "piece": "x-uc-aliskanlik",
+    "status": "Hazır",
+    "time": "12:30"
+  },
+  {
+    "date": "2026-11-28",
+    "channel": "Instagram hikâyesi",
+    "format": "Anket",
+    "topic": "Kira ve faturalar dışında bu ay en çok nereye harcadınız? Market / Yeme içme / Ulaşım / Diğer",
+    "pillar": "ayin-resmi",
+    "goal": "Etkileşim ve gelecek haftaya konu toplamak",
+    "cta": "Ankete katılın",
+    "rationale": "Anketin cevabı gelecek haftanın içeriğini seçer. Deniz'in kendi harcamasını düşünmesi de ayın resmine bakmaya davet eder.",
+    "piece": "hikaye-anket",
+    "status": "Hazır",
+    "time": "11:00"
+  },
+  {
+    "date": "2026-11-29",
+    "channel": "Instagram hikâyesi (sesli)",
+    "format": "Sesli hikâye",
+    "topic": "Pazar akşamı 5 dakikalık bütçe kontrolü",
+    "pillar": "kucuk-aliskanliklar",
+    "goal": "Alışkanlığı sesle hatırlatmak",
+    "cta": "Paneli açın",
+    "rationale": "Cuma günü önerilen kontrolün zamanı geldi. Sesli ve kısa bir hatırlatma, Deniz'in bu alışkanlığını pekiştirir.",
+    "piece": "hikaye-pazar",
+    "status": "Hazır",
+    "time": "20:00"
+  }
+]

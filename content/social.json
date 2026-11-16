@@ -1,0 +1,38 @@
+[
+  {
+    "id": "instagram-ayin-resmi",
+    "channel": "Instagram",
+    "pillar": "ayin-resmi",
+    "image": "gorsel-1-ayin-resmi",
+    "prompt": {
+      "role": "Bir kişisel finans uygulamasının sosyal medya editörüsün. Marka sesi sade, sakin ve yargılamayan.",
+      "task": "Kategori dağılımı özelliğini, ay sonunda paranın nereye gittiğini merak eden 27 yaşındaki Deniz için anlat. Okura \"siz\" diye seslen.",
+      "format": "Instagram gönderisi: ilk satır kısa bir kanca, en çok 4 kısa paragraf, okura bir soru, \"bağlantı profilde\" çağrısı, en çok 5 etiket. Uydurma sayı yok; yalnız ürünün gerçek davranışı."
+    },
+    "text": "Ay bitti, para nereye gitti?\n\nHarcama Takip Paneli'nde her harcama bir kategoriye girer. Kategori dağılımı kartı ayın resmini tek bakışta gösterir: kira, market, ulaşım yan yana.\n\nPaylar her zaman tam %100,0 eder; küçük bir harcama bile kaybolmaz. Görselde en büyük beş kategori var.\n\nSiz bu ay en çok hangi kategoriye harcadınız?\n\nPaneli açın: bağlantı profilde.\n\n#harcamatakibi #bütçe #kişiselfinans #aylıkbütçe #paranereyegitti"
+  },
+  {
+    "id": "linkedin-veri-sizde",
+    "channel": "LinkedIn",
+    "pillar": "veri-sizde",
+    "image": "gorsel-3-veri-sizde",
+    "prompt": {
+      "role": "Gizliliği tasarımın merkezine koyan bir harcama uygulamasının geliştiricisisin.",
+      "task": "Hesap istemeyen ve veriyi sunucuya göndermeyen tasarımın nedenini çalışan profesyonellere anlat. Okura \"siz\" diye seslen.",
+      "format": "LinkedIn gönderisi: kısa bir giriş, 3 maddelik liste, tek cümlelik bir ilke, panel bağlantısı, en çok 3 etiket. Abartı ve söz verme yok."
+    },
+    "text": "Harcama verisi, en kişisel verilerimizden biri. Bu yüzden Harcama Takip Paneli'ni hesap istemeyecek biçimde tasarladım.\n\nPanel şöyle çalışıyor:\n• Kayıt ya da giriş yok; sayfayı açıp ilk harcamanızı ekliyorsunuz.\n• Verileriniz yalnız tarayıcınızda kalıyor, hiçbir sunucuya gönderilmiyor.\n• Veriler cihazlar arasında eşitlenmiyor; yedek için listeyi istediğiniz an CSV olarak indirebiliyorsunuz.\n\nGizlilik bir ayar olmamalı; tasarımın kendisi olmalı. Kaynak kodu herkese açık, nasıl çalıştığına siz de bakabilirsiniz.\n\nÖrnek verilerle deneyin: https://axelxoket.github.io/expense-tracker-dashboard/?ornek\n\n#gizlilik #kişiselfinans #webgeliştirme"
+  },
+  {
+    "id": "x-uc-aliskanlik",
+    "channel": "X",
+    "pillar": "kucuk-aliskanliklar",
+    "image": "gorsel-2-uc-aliskanlik",
+    "prompt": {
+      "role": "Kısa ve net yazan bir kişisel finans içeriği editörüsün.",
+      "task": "Bütçeyi kolaylaştıran 3 küçük alışkanlığı görseldeki sırayla öner: aynı gün eklemek, pazar akşamı ayın resmine bakmak, %80 uyarısında planı gözden geçirmek. Okura \"siz\" diye seslen.",
+      "format": "X gönderisi: en çok 280 karakter, bağlantı dahil; en çok 2 etiket; her alışkanlık kısa bir cümle."
+    },
+    "text": "Bütçeyi kolaylaştıran 3 küçük alışkanlık. Harcamayı yaptığınız gün ekleyin. Pazar akşamı 5 dakika ayın resmine bakın. Panel %80 uyarısı verince planı gözden geçirin.\nPaneli açın: axelxoket.github.io/expense-tracker-dashboard #bütçe"
+  }
+]
