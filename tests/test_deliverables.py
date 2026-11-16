@@ -199,8 +199,8 @@ class Documents(unittest.TestCase):
 
     def test_the_deck_links_open_the_video_the_sound_and_the_source(self):
         media = build.load("media.json")
-        video = f"{docs.REPO_URL}/blob/main/deliverables/icerik-seti/{media['video']['id']}.mp4"
-        voice = f"{docs.REPO_URL}/blob/main/deliverables/icerik-seti/{media['voiceover']['id']}.mp3"
+        video = f"{docs.PAGES_URL}/deliverables/icerik-seti/{media['video']['id']}.mp4"
+        voice = f"{docs.PAGES_URL}/deliverables/icerik-seti/{media['voiceover']['id']}.mp3"
         with fitz.open(OUT / "sunum.pdf") as deck:
             links = {number: {link["uri"] for link in page.get_links() if "uri" in link}
                      for number, page in enumerate(deck, 1)}
@@ -208,8 +208,8 @@ class Documents(unittest.TestCase):
             last = deck.page_count
         self.assertLessEqual({video, voice}, links[media_page])
         self.assertLessEqual({video, voice, docs.REPO_URL, build.BRAND["app_url"]}, links[last])
-        blob = f"{docs.REPO_URL}/blob/main/"
-        files = {uri.removeprefix(blob) for uris in links.values() for uri in uris if uri.startswith(blob)}
+        pages = f"{docs.PAGES_URL}/"
+        files = {uri.removeprefix(pages) for uris in links.values() for uri in uris if uri.startswith(pages)}
         self.assertGreaterEqual(len(files), 3)
         for file in files:
             with self.subTest(file=file):

@@ -261,9 +261,9 @@ class ChecklistRows(unittest.TestCase):
 
 
 class DeckFiles(unittest.TestCase):
-    def test_a_link_opens_the_file_on_the_public_repository(self):
+    def test_a_link_opens_the_file_on_the_pages_site(self):
         anchor = docs.link(build.SET / "tanitim-videosu.mp4")
-        self.assertEqual(anchor, f'<a href="{docs.REPO_URL}/blob/main/deliverables/icerik-seti/tanitim-videosu.mp4">'
+        self.assertEqual(anchor, f'<a href="{docs.PAGES_URL}/deliverables/icerik-seti/tanitim-videosu.mp4">'
                                  'tanitim-videosu.mp4</a>')
 
     def pdf(self, folder, pages):

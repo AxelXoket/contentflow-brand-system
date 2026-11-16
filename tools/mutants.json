@@ -589,8 +589,8 @@
   },
   {
     "file": "tools/docs.py",
-    "old": "{REPO_URL}/blob/main/{path.relative_to(build.ROOT).as_posix()}",
-    "new": "{REPO_URL}/{path.name}",
+    "old": "{PAGES_URL}/{path.relative_to(build.ROOT).as_posix()}",
+    "new": "{PAGES_URL}/{path.name}",
     "lane": "fast",
     "why": "a link misses the file's folder"
   },

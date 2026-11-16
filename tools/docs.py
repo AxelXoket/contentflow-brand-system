@@ -19,6 +19,8 @@ from build import BRAND, COLOURS, CONTENT, FRAMES, OUT, PILLARS, SET, e, load, t
 COMPETITORS = json.loads((build.ROOT / "brand" / "competitors.json").read_text(encoding="utf-8"))
 HANDLE_LINE = "AxelXoket · Kasım 2026"
 REPO_URL = "https://github.com/AxelXoket/contentflow-brand-system"
+# GitHub Pages serves the repository files as they are, so the video and the sound play in the browser.
+PAGES_URL = "https://axelxoket.github.io/contentflow-brand-system"
 PASSED = "Geçti"
 CLAIMS = {item["id"]: item for item in BRAND["facts"] + BRAND["product_claims"]}
 
@@ -396,8 +398,8 @@ def slide(key: str, kicker: str, title: str, inner: str) -> str:
 
 
 def link(path: pathlib.Path) -> str:
-    """A link to a delivered file on the public repository, so the PDF can open the video and the sound."""
-    return f'<a href="{REPO_URL}/blob/main/{path.relative_to(build.ROOT).as_posix()}">{e(path.name)}</a>'
+    """A link to a delivered file on the Pages site, so the PDF opens the video and the sound in a player."""
+    return f'<a href="{PAGES_URL}/{path.relative_to(build.ROOT).as_posix()}">{e(path.name)}</a>'
 
 
 def slide_pngs(pdf: pathlib.Path, keys: list[str]) -> list[pathlib.Path]:

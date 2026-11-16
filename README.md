@@ -32,6 +32,8 @@ Hepsi `deliverables/` altında. Teslimin kendisi oldukları için depoda bilerek
 Sosyal medya metinleri ve RTF istemleri sunumun 14-16. slaytlarında ve `content/social.json` içinde. Görsel, video ve
 ses istemleri 20. slaytta ve `content/media.json` içinde. Blogun CO-STAR istemi `content/prompts.json` içinde.
 
+Video ve ses tarayıcıda oynar: [tanitim-videosu.mp4](https://axelxoket.github.io/contentflow-brand-system/deliverables/icerik-seti/tanitim-videosu.mp4), [hikaye-pazar.mp4](https://axelxoket.github.io/contentflow-brand-system/deliverables/icerik-seti/hikaye-pazar.mp4), [seslendirme.mp3](https://axelxoket.github.io/contentflow-brand-system/deliverables/icerik-seti/seslendirme.mp3).
+
 Canva: slayt PNG'leri görsel olarak yüklenirse görünüm aynen kalır. `sunum.pdf` "PDF içe aktar" ile de açılır, ama Canva'da
 Segoe UI olmadığı için yazılar başka yazı tipine geçip satır değiştirebilir. Video ve ses dosyaları Canva'ya ayrıca
 yüklenir.
@@ -78,6 +80,19 @@ Derleme sırası:
 4. Sunum PDF'e basılır, sonra her sayfası PyMuPDF ile `sunum-slaytlar/` altına PNG olarak çıkarılır.
 5. Edge hiçbir pencere açmadan çalışır; derleme önce ve sonra görünür Edge penceresi sayısını karşılaştırır.
 
+## Yapay zekâyı nerede ve nasıl kullandım
+
+| Görev | Araç | Neden bu araç | Karşılaşılan risk ve önlem |
+| --- | --- | --- | --- |
+| Marka stratejisi, ses rehberi, takvim, blog, gönderi, görsel ve video metinleri | Claude (Claude Code), RTF ve CO-STAR istemleriyle | Uzun marka bağlamını ve kuralları bir arada tutuyor; istemler `content/` altında durduğu için her metin aynı istemle yeniden üretilebiliyor | Dil modeli kanıtsız ürün iddiası ya da marka dışı kelime üretebilir. `tools/checks.py` yayımlanan her metni denetliyor; kaynak satırına bağlanmayan bir iddia ya da kaçınılan bir kelime derlemeyi durduruyor |
+| Seslendirme | edge-tts, Türkçe sinirsel ses `tr-TR-EmelNeural` | Ücretsiz, Türkçe, betikten çağrılabiliyor | Süre hedef aralığın dışına taşabilir; cümleler ayrı seslendirilip sessizlikleri kesiliyor, süre tutmazsa derleme duruyor. Sesli hikâyede "Seslendirme yapay sesle üretildi." notu var |
+| Görseller, hikâyeler, video kareleri | Görsel üretim modeli yok: HTML şablonları başsız Edge'de, kareler Pillow ile çiziliyor; panel ekranları gerçek uygulamadan Playwright ile alındı | Görseldeki arayüz ve sayılar gerçek ürünle aynı olmalı; uydurma bir ekran da kanıtsız bir ürün iddiasıdır | Türkçe yazılar satır sonunda bölünebilir; sayfadaki betik satırları ölçüyor, taşan dosya yazılmıyor |
+| Derleme, denetim ve test kodu | Claude (Claude Code) | Metin ve onu denetleyen kod aynı oturumda birlikte değişiyor | Her kural bir davranış testiyle ve kuralı bozan mutantlarla sınanıyor (bkz. Testler) |
+
+İstem kütüphanesi: sosyal medya istemleri `content/social.json`, görsel, video ve ses istemleri `content/media.json`, blogun
+CO-STAR istemi `content/prompts.json` içinde; sunumun 14-16. ve 20. slaytlarında da görünüyor. Üretilen her metin yayından
+önce yukarıdaki denetimlerden geçiyor; her parçanın sonucu kontrol listesinde.
+
 ## Denetimler
 
 | Kural | Nerede |
@@ -104,7 +119,7 @@ listelerinden alındı; her satırın kaynağı ve erişim tarihi `brand/competi
 python -B -m unittest discover -s tests -t .
 ```
 
-154 test, yaklaşık 15 saniye; Edge kullanan 11 test bunun çoğunu alıyor.
+156 test, yaklaşık 15 saniye; Edge kullanan 11 test bunun çoğunu alıyor.
 
 - `test_checks.py`: her kural sınırın iki yanından sınanır (20 ve 21 kelime, 280 ve 281 karakter, 119/120/155/156
   karakterlik açıklama, 599/600/1200/1201 kelime); iddia bulucu ve "bağlantı profilde" kuralı.
@@ -114,7 +129,7 @@ python -B -m unittest discover -s tests -t .
   gösterilen her satır panelin kodunda gerçekten var; kayıtlı panel kareleri tutarlı.
 - `test_helpers.py`: yazı yardımcıları, kontrol listesi sütunları, video zamanlaması (yumuşak geçiş, form adımları, sayfa
   kayması, sahne süresi), cümle birleştirme ve seslendirmenin cümle cümle okunması, hikâye ilerleme çubuğu, video ve
-  seslendirme süresi kapısı, sessizlik kesme (ffmpeg ile üretilmiş deneme sesleriyle); depo bağlantısı, slayt PNG'leri,
+  seslendirme süresi kapısı, sessizlik kesme (ffmpeg ile üretilmiş deneme sesleriyle); Pages bağlantısı, slayt PNG'leri,
   seçenekleri Instagram'a bırakan anket kartı.
 - `test_render.py`: satır ve taşma ölçümü gerçek bir başsız Edge'de, her kural için bozuk ve sağlam bir sayfayla.
 - `test_deliverables.py`: üretilmiş dosyalar: boyutlar, video süresi ve ses kanalı, videoda bir saniye duran kare ve
@@ -123,7 +138,7 @@ python -B -m unittest discover -s tests -t .
   kopyası, sayfa sayıları, boş sayfa olmaması, PDF'teki her kelimenin bir kaynak dosyada geçmesi, satır sonunda bölünmüş
   kelime ya da kelimesinden ayrılmış sayı olmaması, blog sayfasının paylaşım etiketleri ve görselleri, ekran görüntüsü
   listesi.
-- `test_text_hygiene.py`: depodaki her metin dosyasında uzun tire, yasaklı üslup kelimesi ve CRLF yok.
+- `test_text_hygiene.py`: depodaki her metin dosyasında uzun tire, yasaklı üslup kelimesi ve CRLF yok; araç adları yalnız README'nin yapay zekâ bölümünde geçer.
 
 Testlerin gerçekten bir şey yakaladığını görmek için kuralları tek tek bozan 91 mutasyon denendi; hepsi en az bir
 testi kırmızıya çevirdi. Mutasyonlar projenin geçici bir kopyasında koşar:
