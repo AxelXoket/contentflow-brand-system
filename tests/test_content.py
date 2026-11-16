@@ -56,6 +56,27 @@ class ChecksPass(unittest.TestCase):
 class Calendar(unittest.TestCase):
     rows = build.load("calendar.json")
 
+    @staticmethod
+    def reported(metric_text: str) -> set[str]:
+        """The numbers a channel reports: each part between semicolons, and each side of its "ve", without notes in brackets."""
+        parts = set()
+        for part in re.sub(r"\s*\(.*?\)", "", checks.tr_lower(metric_text)).split(";"):
+            part = part.strip()
+            parts |= {part, *(side.strip() for side in part.split(" ve "))}
+        return parts
+
+    def test_every_post_is_measured_by_a_number_its_channel_reports(self):
+        by_channel = {m["channel"].split()[0]: self.reported(m["metric"]) for m in BRAND["measures"]["channels"]}
+        for row in self.rows:
+            with self.subTest(day=row["date"]):
+                self.assertIn(checks.tr_lower(row["metric"]), by_channel[row["channel"].split()[0]])
+        self.assertTrue(BRAND["measures"]["target"].strip())
+
+    def test_the_reported_numbers_are_whole_parts_not_single_words(self):
+        parts = self.reported("Kaydetme ve paylaşım; hikâye anketinde yanıt sayısı (Instagram)")
+        self.assertEqual(parts, {"kaydetme ve paylaşım", "kaydetme", "paylaşım", "hikâye anketinde yanıt sayısı"})
+        self.assertNotIn("ve", parts)
+
     def test_seven_consecutive_days_from_a_monday(self):
         days = [date.fromisoformat(r["date"]) for r in self.rows]
         self.assertEqual(len(days), 7)
@@ -225,8 +246,52 @@ class Competitors(unittest.TestCase):
             self.assertLessEqual(columns, set(row))
             self.assertTrue(all(str(row[key]).strip() for key in columns))
 
+    def test_no_cell_is_left_as_unknown(self):
+        for row in COMPETITORS["apps"]:
+            for key, value in row.items():
+                with self.subTest(app=row["name"], column=key):
+                    self.assertNotIn("bulunamadı", checks.tr_lower(str(value)))
+
+    def test_the_unknown_check_reads_turkish_capitals(self):
+        self.assertIn("bulunamadı", checks.tr_lower("BİLGİ BULUNAMADI"))
+
     def test_access_date_is_a_real_date_not_in_the_future(self):
         self.assertLessEqual(date.fromisoformat(COMPETITORS["accessed"]), date.today())
+
+
+# A call that would send data from the browser; the privacy claim says the panel makes none.
+NETWORK_CALL = re.compile(r"\bfetch\b|\bsendBeacon\s*\(|\bnew\s+(?:window\.)?(?:XMLHttpRequest|WebSocket|EventSource|RTCPeerConnection)\b"
+                          r"|\bwindow\.open\s*\(|\blocation\.(?:href\s*=|assign\s*\(|replace\s*\()")
+
+
+class PanelPrivacy(unittest.TestCase):
+    @unittest.skipUnless(WEB_REPO.is_dir(), "the panel's repository is not next to this one")
+    def test_the_panel_code_sends_nothing_and_its_page_allows_only_its_own_address(self):
+        shipped = [path for path in (WEB_REPO / "src").rglob("*") if path.suffix in (".js", ".jsx") and ".test." not in path.name]
+        self.assertGreaterEqual(len(shipped), 10)
+        for path in shipped:
+            with self.subTest(file=path.name):
+                self.assertIsNone(NETWORK_CALL.search(path.read_text(encoding="utf-8")))
+        # The cited CSP line is checked by the evidence test; here only that nothing widens it for connections.
+        self.assertNotIn("connect-src", (WEB_REPO / "vite.config.js").read_text(encoding="utf-8"))
+
+    def test_the_scan_finds_each_kind_of_call(self):
+        for code in ("await fetch('/x')", "const get = fetch; get(url)", "navigator.sendBeacon(url, body)", "new XMLHttpRequest()",
+                     "new window.XMLHttpRequest()", "new WebSocket(url)", "new EventSource(url)", "new RTCPeerConnection()",
+                     "window.open(url)", "location.href = url", "location.assign(url)", "location.replace(url)"):
+            self.assertIsNotNone(NETWORK_CALL.search(code), code)
+        self.assertIsNone(NETWORK_CALL.search("const prefetched = refetchLater; // fetching is described here"))
+
+
+class AiUsage(unittest.TestCase):
+    def test_the_readme_table_and_the_deck_slide_share_one_source(self):
+        from tests.test_text_hygiene import AI_SECTION
+        section = AI_SECTION.search((ROOT / "README.md").read_text(encoding="utf-8")).group(0)
+        lines = [line for line in section.splitlines() if line.startswith("| ")][2:]
+        table = [[cell.strip().replace("`", "") for cell in line.strip().strip("|").split(" | ")] for line in lines]
+        rows = build.load("ai_usage.json")
+        self.assertEqual(len(rows), 4)
+        self.assertEqual(table, [[r["task"], r["tool"], r["why"], r["risk"]] for r in rows])
 
 
 if __name__ == "__main__":

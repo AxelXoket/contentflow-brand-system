@@ -166,10 +166,33 @@ class Calendar(unittest.TestCase):
         rows = list(sheet.iter_rows(values_only=True))
         self.assertEqual(list(rows[0]), [title for title, _ in build.CALENDAR_COLUMNS])
         calendar = build.load("calendar.json")
-        self.assertEqual(len(rows) - 1, len(calendar))
-        self.assertEqual([r[0].date() for r in rows[1:]], [date.fromisoformat(c["date"]) for c in calendar])
+        self.assertEqual(len(rows) - 1, len(calendar) + 2)  # the posts, an empty row and the target note
+        posts = rows[1:1 + len(calendar)]
+        self.assertEqual([r[0].date() for r in posts], [date.fromisoformat(c["date"]) for c in calendar])
         topic = list(rows[0]).index("Konu")
-        self.assertEqual([r[topic] for r in rows[1:]], [c["topic"] for c in calendar])
+        self.assertEqual([r[topic] for r in posts], [c["topic"] for c in calendar])
+
+    def test_every_row_carries_its_metric_and_the_target_is_written_once_under_them(self):
+        rows = list(load_workbook(OUT / "icerik-takvimi.xlsx").active.iter_rows(values_only=True))
+        calendar = build.load("calendar.json")
+        metric = list(rows[0]).index("Ölçüt")
+        self.assertEqual([r[metric] for r in rows[1:1 + len(calendar)]], [c["metric"] for c in calendar])
+        self.assertTrue(all(value is None for value in rows[1 + len(calendar)]))
+        self.assertEqual(rows[-1][0], f"{build.TARGET_LABEL} {build.BRAND['measures']['target']}")
+
+    def test_the_deck_shows_where_ai_was_used_and_each_post_s_metric(self):
+        with fitz.open(OUT / "sunum.pdf") as deck:
+            pages = [re.sub(r"\s+", " ", page.get_text()) for page in deck]
+        ai_pages = [text for text in pages if "Yapay zekâyı nerede ve nasıl kullandım" in text]
+        self.assertEqual(len(ai_pages), 1)
+        for row in build.load("ai_usage.json"):
+            for field in ("task", "tool", "why", "risk"):
+                self.assertIn(row[field], ai_pages[0])
+        calendar_pages = [text for text in pages if "İÇERİK TAKVİMİ 1/2" in text]
+        self.assertEqual(len(calendar_pages), 1)
+        for row in build.load("calendar.json"):
+            self.assertIn(row["metric"], calendar_pages[0])
+        self.assertIn(build.BRAND["measures"]["target"], calendar_pages[0])
 
     def test_prints_on_sideways_a4_one_page_wide(self):
         sheet = load_workbook(OUT / "icerik-takvimi.xlsx").active

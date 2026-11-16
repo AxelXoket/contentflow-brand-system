@@ -229,6 +229,14 @@ class ChecklistRows(unittest.TestCase):
         with mock.patch.object(build, "content_problems", return_value=problems):
             return {row["piece"]: row for row in docs.checklist_rows()}
 
+    def test_each_short_rights_label_stands_for_one_note_so_no_note_is_lost_on_the_checklist(self):
+        rows = list(self.rows({}).values())
+        labels = {r["rights_short"] for r in rows}
+        self.assertGreaterEqual(len(labels), 4)
+        for label in labels:
+            with self.subTest(label=label):
+                self.assertEqual(len({r["rights"] for r in rows if r["rights_short"] == label}), 1)
+
     def test_clean_content_shows_passed_everywhere(self):
         rows = self.rows({})
         self.assertTrue(all(r["voice"] == docs.PASSED and r["numbers"] == docs.PASSED for r in rows.values()))

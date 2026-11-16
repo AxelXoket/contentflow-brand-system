@@ -391,6 +391,7 @@
   "disclaimer": "Bu içerik genel bilgi verir; finansal ya da yatırım tavsiyesi değildir.",
   "measures": {
     "note": "Panelde ziyaretçi takibi yok; bu, gizlilik değerinin parçası. Etki yalnız kanalların kendi istatistikleriyle ölçülür ve her hafta aynı gün okunur. İlk haftanın değerleri taban olur; sonraki haftalar ona göre karşılaştırılır.",
+    "target": "Bu haftanın sonuçları taban olur; sonraki haftalarda her gönderi kendi ölçütünde aynı kanalın tabanını geçmeli. Hedef sayı, taban ölçülünce yazılır.",
     "channels": [
       {
         "channel": "Blog",
@@ -479,13 +480,22 @@
       ]
     },
     {
-      "claim": "Veriler tarayıcının yerel deposunda kalır; panel hesap istemez ve hiçbir sunucuya veri göndermez.",
+      "claim": "Panel veriyi başka bir adrese göndermez: kodda ağ isteği yok ve sayfanın güvenlik kuralı bağlantıları yalnız kendi adresine açar.",
+      "evidence": "expense-tracker-dashboard/vite.config.js",
+      "line": "\"default-src 'self';",
+      "id": "veri-gonderilmez",
+      "label": "Sunucuya gitmez",
+      "phrases": [
+        "sunucu"
+      ]
+    },
+    {
+      "claim": "Veriler tarayıcının yerel deposunda kalır; panel hesap istemez.",
       "evidence": "expense-tracker-dashboard/src/main.jsx",
       "line": "return window.localStorage;",
       "id": "veri-tarayicida",
-      "label": "Veri tarayıcıda, hesap yok",
+      "label": "Tarayıcıda, hesap yok",
       "phrases": [
-        "sunucu",
         "tarayıcınızda",
         "hesap yok",
         "hesap istem",

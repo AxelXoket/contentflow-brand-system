@@ -31,7 +31,7 @@
     },
     {
       "name": "Money Manager (Realbyte)",
-      "account": "Bilgi bulunamadı",
+      "account": "Kayıt şartı yazmıyor; e-posta isteğe bağlı",
       "bank": "Yok",
       "data": "Cihazda; isteğe bağlı yedek ve ücretli eşitleme",
       "price": "Ücretsiz; eşitleme 37,99 TL/ay ya da 349,99 TL/yıl",
@@ -58,7 +58,7 @@
     },
     {
       "name": "Monefy",
-      "account": "Bilgi bulunamadı",
+      "account": "Kayıt şartı yazmıyor",
       "bank": "Yok; banka girişi istemez",
       "data": "Cihazda ya da kişinin kendi Google Drive / Dropbox alanında",
       "price": "Ücretsiz; Premium 699,99-2.299,99 TL",

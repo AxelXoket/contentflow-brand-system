@@ -26,7 +26,7 @@ Hepsi `deliverables/` altında. Teslimin kendisi oldukları için depoda bilerek
 | `icerik-seti/seslendirme.mp3` | Pazar günü için TTS seslendirme, 24,2 saniye; cümleler arası 0,6 saniye | 3 |
 | `ekran-goruntuleri/` | 11 ekran görüntüsü, 2560x1440: kimlik kartı, takvim, gerekçeler, blog, üç gönderi, görseller, hikâyeler, video ve ses, istemler | 4 |
 | `kontrol-listesi.pdf` | 2 sayfa: her parça için marka sesi, sayı, ürün iddiası, telif ve etik sonucu; her iddianın kaynak dosyası ve satırı | 4 |
-| `sunum.pdf` | 22 slaytlık 16:9 sunum; video, ses ve kaynak bağlantıları tıklanır | Hepsi |
+| `sunum.pdf` | 23 slaytlık 16:9 sunum; yapay zekâ kullanımı 21. slaytta; video, ses ve kaynak bağlantıları tıklanır | Hepsi |
 | `sunum-slaytlar/` | Her slaytın 2560x1440 PNG kopyası | Hepsi |
 
 Sosyal medya metinleri ve RTF istemleri sunumun 14-16. slaytlarında ve `content/social.json` içinde. Görsel, video ve
@@ -85,9 +85,9 @@ Derleme sırası:
 | Görev | Araç | Neden bu araç | Karşılaşılan risk ve önlem |
 | --- | --- | --- | --- |
 | Marka stratejisi, ses rehberi, takvim, blog, gönderi, görsel ve video metinleri | Claude (Claude Code), RTF ve CO-STAR istemleriyle | Uzun marka bağlamını ve kuralları bir arada tutuyor; istemler `content/` altında durduğu için her metin aynı istemle yeniden üretilebiliyor | Dil modeli kanıtsız ürün iddiası ya da marka dışı kelime üretebilir. `tools/checks.py` yayımlanan her metni denetliyor; kaynak satırına bağlanmayan bir iddia ya da kaçınılan bir kelime derlemeyi durduruyor |
-| Seslendirme | edge-tts, Türkçe sinirsel ses `tr-TR-EmelNeural` | Ücretsiz, Türkçe, betikten çağrılabiliyor | Süre hedef aralığın dışına taşabilir; cümleler ayrı seslendirilip sessizlikleri kesiliyor, süre tutmazsa derleme duruyor. Sesli hikâyede "Seslendirme yapay sesle üretildi." notu var |
+| Seslendirme | edge-tts, Türkçe sinirsel ses `tr-TR-EmelNeural` | Ücretsiz, Türkçe, betikten çağrılabiliyor | Süre hedef aralığın dışına taşabilir; cümleler ayrı seslendirilip sessizlikleri kesiliyor, süre tutmazsa derleme duruyor. Microsoft bu kullanım için açık bir ticari izin vermiyor; ses yalnız bu projenin gösterimi için, reklamdan önce lisanslı bir sesle (Azure AI Speech) yeniden üretilmeli. Sesli hikâyede "Seslendirme yapay sesle üretildi." notu var |
 | Görseller, hikâyeler, video kareleri | Görsel üretim modeli yok: HTML şablonları başsız Edge'de, kareler Pillow ile çiziliyor; panel ekranları gerçek uygulamadan Playwright ile alındı | Görseldeki arayüz ve sayılar gerçek ürünle aynı olmalı; uydurma bir ekran da kanıtsız bir ürün iddiasıdır | Türkçe yazılar satır sonunda bölünebilir; sayfadaki betik satırları ölçüyor, taşan dosya yazılmıyor |
-| Derleme, denetim ve test kodu | Claude (Claude Code) | Metin ve onu denetleyen kod aynı oturumda birlikte değişiyor | Her kural bir davranış testiyle ve kuralı bozan mutantlarla sınanıyor (bkz. Testler) |
+| Derleme, denetim ve test kodu | Claude (Claude Code) | Metin ve onu denetleyen kod aynı oturumda birlikte değişiyor | Her kural bir davranış testiyle ve kuralı bozan mutantlarla sınanıyor (README'deki Testler bölümü) |
 
 İstem kütüphanesi: sosyal medya istemleri `content/social.json`, görsel, video ve ses istemleri `content/media.json`, blogun
 CO-STAR istemi `content/prompts.json` içinde; sunumun 14-16. ve 20. slaytlarında da görünüyor. Üretilen her metin yayından
@@ -119,14 +119,16 @@ listelerinden alındı; her satırın kaynağı ve erişim tarihi `brand/competi
 python -B -m unittest discover -s tests -t .
 ```
 
-156 test, yaklaşık 15 saniye; Edge kullanan 11 test bunun çoğunu alıyor.
+166 test, yaklaşık 20 saniye; Edge kullanan 11 test bunun çoğunu alıyor.
 
 - `test_checks.py`: her kural sınırın iki yanından sınanır (20 ve 21 kelime, 280 ve 281 karakter, 119/120/155/156
   karakterlik açıklama, 599/600/1200/1201 kelime); iddia bulucu ve "bağlantı profilde" kuralı.
 - `test_content.py`: gerçek içerik bütün denetimlerden geçer; takvim pazartesiden başlayan 7 ardışık gün, her satırda
   saat, her sütun kullanılmış, her parça takvimde; istemler eksiksiz ve istemdeki etiket sınırı denetimle aynı; videoda
   ekrandaki yazı ile ses aynı; her görselin ve hikâyenin alt metni var; her iddia en az bir parçada geçiyor ve kaynak
-  gösterilen her satır panelin kodunda gerçekten var; kayıtlı panel kareleri tutarlı.
+  gösterilen her satır panelin kodunda gerçekten var; panelin kodunda ağ isteği yok; her gönderinin ölçütü kanalının
+  raporladığı bir sayı; README'deki yapay zekâ tablosu sunum slaytıyla aynı kaynaktan; rakip tablosunda "bulunamadı" diye bırakılmış hücre yok;
+  kayıtlı panel kareleri tutarlı.
 - `test_helpers.py`: yazı yardımcıları, kontrol listesi sütunları, video zamanlaması (yumuşak geçiş, form adımları, sayfa
   kayması, sahne süresi), cümle birleştirme ve seslendirmenin cümle cümle okunması, hikâye ilerleme çubuğu, video ve
   seslendirme süresi kapısı, sessizlik kesme (ffmpeg ile üretilmiş deneme sesleriyle); Pages bağlantısı, slayt PNG'leri,
@@ -134,13 +136,14 @@ python -B -m unittest discover -s tests -t .
 - `test_render.py`: satır ve taşma ölçümü gerçek bir başsız Edge'de, her kural için bozuk ve sağlam bir sayfayla.
 - `test_deliverables.py`: üretilmiş dosyalar: boyutlar, video süresi ve ses kanalı, videoda bir saniye duran kare ve
   cümleler arasında 0,6 saniyeden, seslendirmede 0,9 saniyeden uzun sessizlik olmaması, ses yüksekliği, hikâyeler, takvim
-  satırları ve yazdırma ayarı, sunumdaki video, ses ve kaynak bağlantılarının depodaki dosyalara gitmesi, her slaytın PNG
+  satırları, gönderi ölçütleri, tablonun altındaki hedef notu ve yazdırma ayarı, sunumdaki yapay zekâ slaytı ve takvim
+  ölçütleri, sunumdaki video, ses ve kaynak bağlantılarının depodaki dosyalara gitmesi, her slaytın PNG
   kopyası, sayfa sayıları, boş sayfa olmaması, PDF'teki her kelimenin bir kaynak dosyada geçmesi, satır sonunda bölünmüş
   kelime ya da kelimesinden ayrılmış sayı olmaması, blog sayfasının paylaşım etiketleri ve görselleri, ekran görüntüsü
   listesi.
-- `test_text_hygiene.py`: depodaki her metin dosyasında uzun tire, yasaklı üslup kelimesi ve CRLF yok; araç adları yalnız README'nin yapay zekâ bölümünde geçer.
+- `test_text_hygiene.py`: depodaki her metin dosyasında uzun tire, yasaklı üslup kelimesi ve CRLF yok; araç adları yalnız README'nin yapay zekâ bölümünde ve sunumdaki yapay zekâ slaytının verisinde (`content/ai_usage.json`) geçer.
 
-Testlerin gerçekten bir şey yakaladığını görmek için kuralları tek tek bozan 91 mutasyon denendi; hepsi en az bir
+Testlerin gerçekten bir şey yakaladığını görmek için kuralları tek tek bozan 95 mutasyon denendi; hepsi en az bir
 testi kırmızıya çevirdi. Mutasyonlar projenin geçici bir kopyasında koşar:
 
 ```bash
@@ -169,6 +172,7 @@ deliverables/ üretilmiş teslim dosyaları
 - Blog yazısının yayın adresi belli değil; `blog.html` bu yüzden canonical ve `og:url` taşımaz, `og:image` da göreli yoldur; adres belli olunca mutlak
   adresler eklenir.
 - Edge yolu Windows'a göre yazıldı (`tools/render.py`, `EDGE`).
-- Ses Microsoft Edge'in çevrimiçi sesli okuma hizmetiyle (edge-tts) üretildi. Ücretli reklam olarak yayından önce hizmetin
-  kullanım koşulları gözden geçirilmeli; sesli hikâyede "Seslendirme yapay sesle üretildi." notu var.
+- Ses Microsoft Edge'in çevrimiçi sesli okuma hizmetiyle (edge-tts) üretildi. Microsoft bu kullanım için açık bir ticari
+  izin vermiyor; bu yüzden ses yalnız bu projenin gösterimi içindir, reklamda kullanılmadan önce lisanslı bir sesle (Azure AI
+  Speech, aynı ses `tr-TR-EmelNeural`) yeniden üretilmeli. Sesli hikâyede "Seslendirme yapay sesle üretildi." notu var.
 - İçerik genel bilgi verir; finansal ya da yatırım tavsiyesi değildir.

@@ -635,5 +635,33 @@
     "new": "markdown_text))",
     "lane": "fast",
     "why": "picture alt text counts as blog words"
+  },
+  {
+    "file": "content/calendar.json",
+    "old": "\"metric\": \"Paylaşım\"",
+    "new": "\"metric\": \"Beğeni\"",
+    "lane": "fast",
+    "why": "a post is measured by a number its channel does not report"
+  },
+  {
+    "file": "brand/brand.json",
+    "old": "\"target\": \"Bu haftanın",
+    "new": "\"target\": \" \", \"was\": \"Bu haftanın",
+    "lane": "fast",
+    "why": "the posts lose their target"
+  },
+  {
+    "file": "README.md",
+    "old": "Microsoft bu kullanım için açık bir ticari izin vermiyor; ses yalnız bu projenin gösterimi için, reklamdan önce lisanslı bir sesle (Azure AI Speech) yeniden üretilmeli. ",
+    "new": "",
+    "lane": "fast",
+    "why": "the README AI table drifts from the deck slide's data"
+  },
+  {
+    "file": "content/checklist.json",
+    "old": "\"story_audio\": \"Ses edge-tts ile",
+    "new": "\"story_audio\": \"Ses yalnız edge-tts ile",
+    "lane": "fast",
+    "why": "two notes share a short label and the checklist shows only one"
   }
 ]

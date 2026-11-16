@@ -534,7 +534,10 @@ def length_problem(seconds: float, spec: dict, name: str) -> str | None:
 # ---------- calendar ----------
 
 CALENDAR_COLUMNS = [("Tarih", 13), ("Gün", 11), ("Saat", 8), ("Kanal", 22), ("Format", 18), ("Konu", 40), ("İçerik sütunu", 20),
-                    ("Amaç", 28), ("Çağrı", 20), ("Gerekçe (hedef kitle)", 64), ("Dosya", 37), ("Durum", 13)]
+                    ("Amaç", 28), ("Çağrı", 20), ("Ölçüt", 26), ("Gerekçe (hedef kitle)", 64), ("Dosya", 37), ("Durum", 13)]
+
+
+TARGET_LABEL = "Hedef:"
 
 
 def piece_files() -> dict:
@@ -565,14 +568,18 @@ def build_calendar() -> pathlib.Path:
     files = piece_files()
     for r, row in enumerate(load("calendar.json"), 2):
         values = [date.fromisoformat(row["date"]), tr_day(row["date"]), row["time"], row["channel"], row["format"], row["topic"],
-                  PILLARS[row["pillar"]]["name"], row["goal"], row["cta"], row["rationale"], files.get(row["piece"], "Metin bu satırda"),
-                  row["status"]]
+                  PILLARS[row["pillar"]]["name"], row["goal"], row["cta"], row["metric"], row["rationale"],
+                  files.get(row["piece"], "Metin bu satırda"), row["status"]]
         for column, value in enumerate(values, 1):
             cell = sheet.cell(row=r, column=column, value=value)
             cell.font = Font(name="Segoe UI")
             cell.alignment = Alignment(horizontal="left", vertical="top", wrap_text=True, indent=1)
             cell.border = Border(top=thin, bottom=thin, left=thin, right=thin)
         sheet.cell(row=r, column=1).number_format = "DD.MM.YYYY"
+    # The target is the same for every post, so it is written once under the table, not in a column of its own.
+    note = sheet.cell(row=r + 2, column=1, value=f"{TARGET_LABEL} {BRAND['measures']['target']}")
+    note.font = Font(name="Segoe UI", bold=True)
+    sheet.merge_cells(start_row=r + 2, start_column=1, end_row=r + 2, end_column=len(CALENDAR_COLUMNS))
     sheet.freeze_panes = "A2"
     sheet.row_dimensions[1].height = 30
     # Printed or saved as PDF: A4 turned sideways, every column on one page width, the header on every page.
@@ -608,7 +615,7 @@ def published_texts() -> dict:
     texts["video"] = "\n".join(s["text"] + "\n" + s["narration"] for s in media["video"]["scenes"])
     texts["voiceover"] = media["voiceover"]["script"]
     for row in load("calendar.json"):
-        texts[f"calendar {row['date']}"] = "\n".join([row["topic"], row["goal"], row["rationale"]])
+        texts[f"calendar {row['date']}"] = "\n".join([row["topic"], row["goal"], row["metric"], row["rationale"]])
     return texts
 
 

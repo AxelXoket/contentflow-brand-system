@@ -20,7 +20,7 @@ LANES = {
     "fast": ["tests.test_checks", "tests.test_content", "tests.test_helpers"],
     "edge": ["tests.test_render"],
 }
-COPIED = ("tools", "tests", "brand", "content", "assets")
+COPIED = ("tools", "tests", "brand", "content", "assets", "README.md")
 
 
 def run_lane(copy: pathlib.Path, lane: str) -> bool:
@@ -38,7 +38,10 @@ def main() -> None:
     with tempfile.TemporaryDirectory() as tmp:
         copy = pathlib.Path(tmp)
         for part in COPIED:
-            shutil.copytree(ROOT / part, copy / part, ignore=shutil.ignore_patterns("__pycache__"))
+            if (ROOT / part).is_dir():
+                shutil.copytree(ROOT / part, copy / part, ignore=shutil.ignore_patterns("__pycache__"))
+            else:
+                shutil.copy2(ROOT / part, copy / part)
         for lane in {m["lane"] for m in mutants}:
             if not run_lane(copy, lane):
                 raise SystemExit(f"the {lane} lane is red before any mutation")

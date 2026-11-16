@@ -1,0 +1,26 @@
+[
+  {
+    "task": "Marka stratejisi, ses rehberi, takvim, blog, gönderi, görsel ve video metinleri",
+    "tool": "Claude (Claude Code), RTF ve CO-STAR istemleriyle",
+    "why": "Uzun marka bağlamını ve kuralları bir arada tutuyor; istemler content/ altında durduğu için her metin aynı istemle yeniden üretilebiliyor",
+    "risk": "Dil modeli kanıtsız ürün iddiası ya da marka dışı kelime üretebilir. tools/checks.py yayımlanan her metni denetliyor; kaynak satırına bağlanmayan bir iddia ya da kaçınılan bir kelime derlemeyi durduruyor"
+  },
+  {
+    "task": "Seslendirme",
+    "tool": "edge-tts, Türkçe sinirsel ses tr-TR-EmelNeural",
+    "why": "Ücretsiz, Türkçe, betikten çağrılabiliyor",
+    "risk": "Süre hedef aralığın dışına taşabilir; cümleler ayrı seslendirilip sessizlikleri kesiliyor, süre tutmazsa derleme duruyor. Microsoft bu kullanım için açık bir ticari izin vermiyor; ses yalnız bu projenin gösterimi için, reklamdan önce lisanslı bir sesle (Azure AI Speech) yeniden üretilmeli. Sesli hikâyede \"Seslendirme yapay sesle üretildi.\" notu var"
+  },
+  {
+    "task": "Görseller, hikâyeler, video kareleri",
+    "tool": "Görsel üretim modeli yok: HTML şablonları başsız Edge'de, kareler Pillow ile çiziliyor; panel ekranları gerçek uygulamadan Playwright ile alındı",
+    "why": "Görseldeki arayüz ve sayılar gerçek ürünle aynı olmalı; uydurma bir ekran da kanıtsız bir ürün iddiasıdır",
+    "risk": "Türkçe yazılar satır sonunda bölünebilir; sayfadaki betik satırları ölçüyor, taşan dosya yazılmıyor"
+  },
+  {
+    "task": "Derleme, denetim ve test kodu",
+    "tool": "Claude (Claude Code)",
+    "why": "Metin ve onu denetleyen kod aynı oturumda birlikte değişiyor",
+    "risk": "Her kural bir davranış testiyle ve kuralı bozan mutantlarla sınanıyor (README'deki Testler bölümü)"
+  }
+]

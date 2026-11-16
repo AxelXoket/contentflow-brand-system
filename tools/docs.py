@@ -252,11 +252,10 @@ def checklist() -> pathlib.Path:
                          for cid, item in CLAIMS.items())
     low, high = checks.BLOG_DESCRIPTION
     page1 = f"""
-<p>Bütün içerikler yayından önce üç açıdan denetlendi: marka sesi tutarlılığı, telif ve etik uygunluk, halüsinasyon riski.
-Ses ve sayı sütunları <b>tools/checks.py</b> çıktısıdır; iddia sütunu her parçada bulunan ürün iddialarıdır. Bu sayfa her
-derlemede yeniden üretilir ve bir denetim geçmezse derleme hiçbir dosya yazmadan durur.</p>
+<p>İçerikler yayından önce üç açıdan denetlendi: marka sesi, telif ve etik, halüsinasyon riski. Ses ve sayı sütunları
+<b>tools/checks.py</b> çıktısıdır; bir denetim geçmezse derleme dosya yazmadan durur.</p>
 <h2>Parça parça sonuçlar</h2>
-<table><colgroup><col style="width:24%"><col style="width:9%"><col style="width:8%"><col style="width:35%"><col></colgroup>
+<table><colgroup><col style="width:23%"><col style="width:9%"><col style="width:8%"><col style="width:39%"><col></colgroup>
 <thead><tr><th>İçerik</th><th>Marka sesi</th><th>Sayılar</th><th>Ürün iddiaları (kaynaklı)</th><th>Telif ve etik</th></tr></thead>
 <tbody>{body_rows}</tbody></table>
 <h2>Telif ve etik notları</h2>{bullets(f"<b>{e(label)}:</b> {e(text)}" for label, text in rights.items())}
@@ -526,15 +525,17 @@ def pillars_slide() -> str:
 
 def calendar_slide() -> str:
     calendar = load("calendar.json")
-    widths = "".join(f'<col style="width:{w}%">' for w in (16, 21, 12, 30, 13, 8))
+    widths = "".join(f'<col style="width:{w}%">' for w in (14, 17, 11, 25, 12, 15, 6))
     rows = "".join(f"<tr><td>{e(short_date(r['date']))}</td><td>{e(r['channel'])}</td><td>{e(r['format'])}</td>"
-                   f"<td>{e(r['topic'])}</td><td>{e(PILLARS[r['pillar']]['name'])}</td><td>{e(r['status'])}</td></tr>" for r in calendar)
+                   f"<td>{e(r['topic'])}</td><td>{e(PILLARS[r['pillar']]['name'])}</td><td>{e(r['metric'])}</td>"
+                   f"<td>{e(r['status'])}</td></tr>" for r in calendar)
     first, last = build.date.fromisoformat(calendar[0]["date"]), build.date.fromisoformat(calendar[-1]["date"])
     start = str(first.day) if (first.year, first.month) == (last.year, last.month) else tr_date(first.isoformat())
     return slide("icerik-takvimi", "AŞAMA 3 · İÇERİK TAKVİMİ 1/2",
                  f"{len(calendar)} gün, {len(calendar)} içerik ({start}-{tr_date(last.isoformat())})",
                  f"<table><colgroup>{widths}</colgroup><thead><tr><th>Tarih</th><th>Kanal</th><th>Format</th><th>Konu</th>"
-                 f"<th>Sütun</th><th>Durum</th></tr></thead><tbody>{rows}</tbody></table>"
+                 f"<th>Sütun</th><th>Ölçüt</th><th>Durum</th></tr></thead><tbody>{rows}</tbody></table>"
+                 f'<p style="font-size:17px;margin-top:12px"><b>Hedef:</b> {e(BRAND["measures"]["target"])}</p>'
                  '<p class="muted" style="font-size:14px;margin-top:8px">Saat, amaç, çağrı ve gerekçe sonraki slaytta; '
                  'dosya sütunu icerik-takvimi.xlsx içinde.</p>')
 
@@ -645,6 +646,18 @@ def prompts_slide() -> str:
                  'şablonundan (HTML) çizildi; ses edge-tts ile okundu.</p>')
 
 
+def ai_usage_slide() -> str:
+    """The same rows as the README's AI-usage table; content/ai_usage.json is the one source of both."""
+    widths = "".join(f'<col style="width:{w}%">' for w in (19, 19, 24, 38))
+    rows = "".join(f"<tr><td><b>{e(r['task'])}</b></td><td>{e(r['tool'])}</td><td>{e(r['why'])}</td><td>{e(r['risk'])}</td></tr>"
+                   for r in load("ai_usage.json"))
+    return slide("yapay-zeka", "AŞAMA 4 · SÜREÇ", "Yapay zekâyı nerede ve nasıl kullandım",
+                 f'<table style="font-size:13px"><colgroup>{widths}</colgroup><thead><tr><th>Görev</th><th>Araç</th>'
+                 f'<th>Neden bu araç</th><th>Karşılaşılan risk ve önlem</th></tr></thead><tbody>{rows}</tbody></table>'
+                 '<p class="muted" style="font-size:14px;margin-top:8px">İstemler content/ altında; her parçanın denetim '
+                 'sonucu sonraki slaytta ve kontrol-listesi.pdf içinde.</p>')
+
+
 def control_slide() -> str:
     rows = "".join(f"<tr><td>{e(r['piece'])}</td><td>{e(r['voice'])}</td><td>{e(r['numbers'])}</td>"
                    f"<td>{len(r['claims'])}</td><td>{e(r['rights_short'])}</td></tr>" for r in checklist_rows())
@@ -684,7 +697,7 @@ def deck() -> pathlib.Path:
         slides = [cover_slide(), analysis_slide(), identity_slide(), strategy_slide(), voice_slide(), voice_examples_slide(),
                   channels_slide(), pillars_slide(), calendar_slide(), calendar_reason_slide(), blog_slide(), *blog_text_slides(),
                   *social_slides(images), images_slide(images), stories_slide(workdir), media_slide(workdir), prompts_slide(),
-                  control_slide(), files_slide()]
+                  ai_usage_slide(), control_slide(), files_slide()]
         slides = [html.replace(SLIDE_NUMBER, str(number)) for number, html in enumerate(slides, 1)]
         title = "ContentFlow: Harcama Takip Paneli"
         page_path = build.write_checked(build.page(title, DECK_CSS, "".join(slides)), workdir / "sunum.html", 1300, 800)

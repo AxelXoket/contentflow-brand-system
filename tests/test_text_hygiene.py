@@ -22,8 +22,10 @@ def repo_text_files() -> list:
     return [ROOT / name for name in listed if (ROOT / name).suffix in TEXT_SUFFIXES or name.endswith(".gitignore")]
 
 
-# The README's AI-usage section names the tools it describes; the tool names stay out of every other text.
+# The README's AI-usage section and the deck slide's data name the tools they describe; the names stay out of every
+# other text.
 AI_SECTION = re.compile(r"^## Yapay zekâyı nerede ve nasıl kullandım\n.*?(?=^## |\Z)", re.MULTILINE | re.DOTALL)
+AI_DATA = ROOT / "content" / "ai_usage.json"
 TOOL_NAMES = ("clau" + "de", "anthro" + "pic")
 
 
@@ -52,7 +54,7 @@ class RepositoryText(unittest.TestCase):
                     self.assertEqual(len(sections), 1)
                     self.assertEqual(problems(sections[0], tools_named=True), [])
                     text = AI_SECTION.sub("", text)
-                self.assertEqual(problems(text), [])
+                self.assertEqual(problems(text, tools_named=path == AI_DATA), [])
 
     def test_the_scan_sees_the_code_the_content_and_the_built_blog(self):
         names = {path.relative_to(ROOT).as_posix() for path in repo_text_files()}
